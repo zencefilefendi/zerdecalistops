@@ -3424,6 +3424,7 @@ app/bundles/LeadBundle/Tests/Validator/Constraints/EmailAddressValidatorTest.php
 app/bundles/LeadBundle/Tests/Services/PeakInteractionTimerTest.php
 app/bundles/LeadBundle/Tests/Services/ContactSegmentFilterDictionaryTest.php
 app/bundles/LeadBundle/Tests/Command/CleanupExportedFilesCommandFunctionalTest.php
+app/bundles/LeadBundle/Tests/Command/DeleteLeadListsCommandFunctionalTest.php
 app/bundles/LeadBundle/Tests/Command/SegmentFiltersFunctionalTest.php
 app/bundles/LeadBundle/Tests/Command/ContactScheduledExportCommandTest.php
 app/bundles/LeadBundle/Tests/Command/SegmentStatCommandTest.php
@@ -3478,6 +3479,7 @@ app/bundles/LeadBundle/Command/ContactScheduledExportCommand.php
 app/bundles/LeadBundle/Command/DeduplicateCommand.php
 app/bundles/LeadBundle/Command/UpdateLeadListsCommand.php
 app/bundles/LeadBundle/Command/SegmentCountCacheCommand.php
+app/bundles/LeadBundle/Command/DeleteLeadListsCommand.php
 app/bundles/LeadBundle/Command/DeduplicateIdsCommand.php
 app/bundles/LeadBundle/Command/CleanupExportedFilesCommand.php
 app/bundles/LeadBundle/Command/ImportCommand.php
@@ -4206,6 +4208,7 @@ app/bundles/FormBundle/Helper/PointActionHelper.php
 app/bundles/FormBundle/Helper/PropertiesAccessor.php
 app/bundles/FormBundle/Helper/FormUploader.php
 app/bundles/FormBundle/Helper/FormFieldHelper.php
+app/bundles/FormBundle/Helper/BlockedFreeEmailProvidersHelper.php
 app/bundles/FormBundle/Helper/TokenHelper.php
 app/bundles/FormBundle/Collector/MappedObjectCollector.php
 app/bundles/FormBundle/Collector/AlreadyMappedFieldCollector.php
@@ -4223,6 +4226,7 @@ app/bundles/FormBundle/DataFixtures/ORM/fakeresult2data.csv
 app/bundles/FormBundle/DataFixtures/ORM/LoadFormData.php
 app/bundles/FormBundle/DataFixtures/ORM/LoadFormResultData.php
 app/bundles/FormBundle/Assets/WebhookPayload/form_on_submit.json
+app/bundles/FormBundle/Assets/json/blocked_free_email_providers.json
 app/bundles/FormBundle/Assets/js/form.js
 app/bundles/FormBundle/Model/SubmissionResultLoader.php
 app/bundles/FormBundle/Model/ActionModel.php
@@ -4322,6 +4326,7 @@ app/bundles/FormBundle/Tests/Controller/Api/FormApiControllerTest.php
 app/bundles/FormBundle/Tests/Controller/SubmissionFunctionalTest.php
 app/bundles/FormBundle/Tests/Controller/PublicControllerFunctionalTest.php
 app/bundles/FormBundle/Tests/Helper/PropertiesAccessorTest.php
+app/bundles/FormBundle/Tests/Helper/BlockedFreeEmailProvidersHelperTest.php
 app/bundles/FormBundle/Tests/Helper/FormFieldHelperTest.php
 app/bundles/FormBundle/Tests/Collector/ObjectCollectorTest.php
 app/bundles/FormBundle/Tests/Collector/FieldCollectorTest.php
@@ -5031,6 +5036,7 @@ app/bundles/CoreBundle/Twig/Helper/GravatarHelper.php
 app/bundles/CoreBundle/Twig/Helper/ConfigHelper.php
 app/bundles/CoreBundle/Twig/Helper/ContentHelper.php
 app/bundles/CoreBundle/Twig/Helper/ThemeHelper.php
+app/bundles/CoreBundle/Twig/Extension/PurifyExtension.php
 app/bundles/CoreBundle/Twig/Extension/MenuExtension.php
 app/bundles/CoreBundle/Twig/Extension/HtmlExtension.php
 app/bundles/CoreBundle/Twig/Extension/InputExtension.php
@@ -5275,6 +5281,7 @@ app/bundles/CoreBundle/Tests/Twig/Fixtures/tests/string.test
 app/bundles/CoreBundle/Tests/Twig/Fixtures/functions/includeScript.test
 app/bundles/CoreBundle/Tests/Twig/Fixtures/functions/get_class.test
 app/bundles/CoreBundle/Tests/Twig/TwigIntegrationTest.php
+app/bundles/CoreBundle/Tests/Twig/Extension/PurifyExtensionTest.php
 app/bundles/CoreBundle/Tests/Twig/Extension/LanguageExtensionTest.php
 app/bundles/CoreBundle/Tests/Twig/TwigIntegrationTestTrait.php
 app/bundles/CoreBundle/Tests/Twig/ThemesExtensionTest.php
@@ -5306,6 +5313,7 @@ app/bundles/CoreBundle/Tests/Functional/Entity/CommonRepositoryTest.php
 app/bundles/CoreBundle/Tests/Functional/Entity/CommonRepositoryUpsertTest.php
 app/bundles/CoreBundle/Tests/Functional/Entity/NotificationRepositoryTest.php
 app/bundles/CoreBundle/Tests/Functional/UserEntityTrait.php
+app/bundles/CoreBundle/Tests/Functional/Command/MaxMindDoNotSellPurgeCommandTest.php
 app/bundles/CoreBundle/Tests/Functional/Command/EntityExportCommandTest.php
 app/bundles/CoreBundle/Tests/Functional/Command/AnonymizeIpCommandTest.php
 app/bundles/CoreBundle/Tests/_data/.gitkeep
@@ -5420,6 +5428,7 @@ app/bundles/CoreBundle/Tests/Unit/Release/ThisReleaseTest.php
 app/bundles/CoreBundle/Tests/Unit/Security/Permissions/CorePermissionsTest.php
 app/bundles/CoreBundle/Tests/Unit/Type/UTCDateTimeImmutableTypeTest.php
 app/bundles/CoreBundle/Tests/Unit/Form/Type/DynamicContentFilterEntryFiltersTypeTest.php
+app/bundles/CoreBundle/Tests/Unit/Form/Type/SortableValueLabelListTypeTest.php
 app/bundles/CoreBundle/Tests/Unit/Form/Type/ContentPreviewSettingsTypeTest.php
 app/bundles/CoreBundle/Tests/Unit/Form/Type/DynamicListTypeTest.php
 app/bundles/CoreBundle/Tests/Unit/Form/Type/ConfigTypeTest.php
@@ -5709,10 +5718,13 @@ app/middlewares/Dev/IpRestrictMiddleware.php
 app/middlewares/VersionCheckMiddleware.php
 app/.github/workflows/close_pull_requests.yml
 app/migrations/Version20221010121758.php
+app/migrations/Version20220120123310.php
 app/migrations/Version20231206152313.php
+app/migrations/Version20260107152513.php
 app/migrations/Version20221128145933.php
 app/migrations/Version20211020142629.php
 app/migrations/Version20231110103625.php
+app/migrations/Version20260107152512.php
 app/migrations/Version20230311195347.php
 app/migrations/Version20230621074925.php
 app/migrations/Version20250618122722.php
@@ -5803,6 +5815,7 @@ app/migrations/Version20220722074516.php
 app/migrations/Version20220223072252.php
 app/migrations/Version20210330075323.php
 app/migrations/Version20221014081742.php
+app/migrations/Version20220104115633.php
 app/migrations/Version20211026152443.php
 app/migrations/Version20230606111852.php
 app/migrations/Version20230506112314.php

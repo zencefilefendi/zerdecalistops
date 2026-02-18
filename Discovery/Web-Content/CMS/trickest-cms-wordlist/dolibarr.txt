@@ -250,6 +250,7 @@ dev/initdemo/removeconfdemo.sh
 dev/initdemo/savedemo.sh
 dev/initdemo/README.md
 dev/initdemo/updatedemo.php
+dev/initdemo/mysqldump_dolibarr_24.0.0.sql
 dev/initdemo/initdemo.sh
 dev/initdemo/documents_demo/medias/README.txt
 dev/initdemo/documents_demo/societe/19/SEPA Mandate 19-Morgan Bank-RUM1301-0008-0.pdf
@@ -296,7 +297,6 @@ dev/initdemo/documents_demo/fournisseur/facture/6/1/16/16.pdf
 dev/initdemo/documents_demo/fournisseur/facture/7/1/17/17.pdf
 dev/initdemo/sftpget_and_loaddump.php
 dev/initdemo/mysqldump_dolibarr_3.5.0.sql
-dev/initdemo/mysqldump_dolibarr_23.0.0.sql
 dev/tools/fixduplicatelangkey.sh
 dev/tools/fixduplicatelanglines.sh
 dev/tools/dolibarr-postgres2mysql.php
@@ -1265,7 +1265,6 @@ htdocs/core/tpl/extrafields_add.tpl.php
 htdocs/core/actions_printing.inc.php
 htdocs/core/class/dolgeoip.class.php
 htdocs/core/class/commonobjectline.class.php
-htdocs/core/class/dolreceiptprinter.class.php
 htdocs/core/class/stats.class.php
 htdocs/core/class/smtps.class.php
 htdocs/core/class/cleadstatus.class.php
@@ -5105,6 +5104,7 @@ htdocs/install/mysql/tables/llx_bank_account.key.sql
 htdocs/install/mysql/tables/llx_expensereport_det_extrafields.key.sql
 htdocs/install/mysql/tables/llx_product_attribute_value-variants.sql
 htdocs/install/mysql/tables/llx_receptiondet_batch.sql
+htdocs/install/mysql/tables/llx_ai_request_log-ai.sql
 htdocs/install/mysql/tables/llx_projet_task.key.sql
 htdocs/install/mysql/tables/llx_paiementfourn_facturefourn.sql
 htdocs/install/mysql/tables/llx_stocktransfer_stocktransferline_extrafields-stocktransfer.sql
@@ -5395,6 +5395,7 @@ htdocs/install/mysql/tables/llx_fichinter.sql
 htdocs/install/mysql/tables/llx_propal_extrafields.key.sql
 htdocs/install/mysql/tables/llx_categorie_user.key.sql
 htdocs/install/mysql/tables/llx_user.sql
+htdocs/install/mysql/tables/llx_ai_request_log-ai.key.sql
 htdocs/install/mysql/tables/llx_categorie_member.key.sql
 htdocs/install/mysql/tables/llx_accounting_transaction_template-accounting.sql
 htdocs/install/mysql/tables/llx_c_product_nature.key.sql
@@ -5967,6 +5968,7 @@ htdocs/blockedlog/admin/blockedlog_list.php
 htdocs/blockedlog/admin/blockedlog_archives.php
 htdocs/blockedlog/admin/filecheck.php
 htdocs/blockedlog/admin/blockedlog.php
+htdocs/blockedlog/admin/registration.php
 htdocs/blockedlog/README-fr.md
 htdocs/expedition/contact.php
 htdocs/expedition/list.php
@@ -6247,7 +6249,24 @@ htdocs/public/includes/ckeditor/ckeditor/build-config.js
 htdocs/public/includes/ckeditor/ckeditor/styles.js
 htdocs/public/includes/ckeditor/ckeditor/CHANGES.md
 htdocs/public/includes/ckeditor/ckeditor/bender-runner.config.json
+htdocs/public/includes/jquery/README.txt
+htdocs/public/includes/jquery/plugins/jquerytreeview/jquery.treeview.async.js
+htdocs/public/includes/jquery/plugins/jquerytreeview/lib/jquery.cookie.js
+htdocs/public/includes/jquery/plugins/jquerytreeview/readme.md
+htdocs/public/includes/jquery/plugins/jquerytreeview/jquery.treeview.edit.js
+htdocs/public/includes/jquery/plugins/jquerytreeview/jquery.treeview.sortable.js
+htdocs/public/includes/jquery/plugins/jquerytreeview/jquery.treeview.js
+htdocs/public/includes/jquery/plugins/jquerytreeview/changelog.md
+htdocs/public/includes/jquery/plugins/jnotify/jquery.jnotify.js
 htdocs/public/includes/jquery/plugins/jnotify/jquery.jnotify.min.js
+htdocs/public/includes/jquery/plugins/colorpicker/jquery.colorpicker.js
+htdocs/public/includes/jquery/plugins/jeditable/jquery.jeditable.js
+htdocs/public/includes/jquery/plugins/jeditable/jquery.jeditable.min.js
+htdocs/public/includes/jquery/plugins/jeditable/jquery.jeditable.ui-autocomplete.js
+htdocs/public/includes/jquery/plugins/jeditable/jquery.jeditable.ckeditor.js
+htdocs/public/includes/jquery/plugins/jeditable/jquery.jeditable.ui-datepicker.js
+htdocs/public/includes/jquery/plugins/jcrop/js/jquery.Jcrop.js
+htdocs/public/includes/jquery/plugins/jcrop/js/jquery.Jcrop.min.js
 htdocs/public/includes/jquery/plugins/select2/Gruntfile.js
 htdocs/public/includes/jquery/plugins/select2/LICENSE.md
 htdocs/public/includes/jquery/plugins/select2/README.md
@@ -6322,6 +6341,20 @@ htdocs/public/includes/jquery/plugins/select2/dist/js/select2.full.js
 htdocs/public/includes/jquery/plugins/select2/dist/js/select2.full.min.js
 htdocs/public/includes/jquery/plugins/select2/composer.json
 htdocs/public/includes/jquery/plugins/select2/package.json
+htdocs/public/includes/jquery/plugins/jSignature/jSignature.min.js
+htdocs/public/includes/jquery/plugins/jSignature/jSignature.js
+htdocs/public/includes/jquery/plugins/multiselect/jquery.multi-select.js
+htdocs/public/includes/jquery/plugins/multiselect/jquery.multi-select.min.js
+htdocs/public/includes/jquery/plugins/tablednd/jquery.tablednd.min.js
+htdocs/public/includes/jquery/plugins/tablednd/README.txt
+htdocs/public/includes/jquery/plugins/tablednd/jquery.tablednd.js
+htdocs/public/includes/jquery/plugins/jqueryFileTree/jqueryFileTree.js
+htdocs/public/includes/jquery/plugins/jpicker/jpicker-1.1.6.js
+htdocs/public/includes/jquery/plugins/jpicker/ChangeLog.txt
+htdocs/public/includes/jquery/plugins/jpicker/ReadMe.txt
+htdocs/public/includes/jquery/plugins/jpicker/jpicker-1.1.6.min.js
+htdocs/public/includes/jquery/js/jquery.js
+htdocs/public/includes/jquery/js/jquery-ui.js
 htdocs/public/includes/jquery/js/jquery.min.js
 htdocs/public/includes/jquery/js/jquery-ui.min.js
 htdocs/public/emailing/mailing-read.php
@@ -6944,6 +6977,7 @@ htdocs/compta/prelevement/class/ligneprelevement.class.php
 htdocs/compta/prelevement/line.php
 htdocs/compta/prelevement/fiche-rejet.php
 htdocs/compta/prelevement/card.php
+htdocs/compta/prelevement/requests.php
 htdocs/compta/prelevement/index.php
 htdocs/compta/prelevement/create.php
 htdocs/compta/prelevement/rejets.php
@@ -6954,7 +6988,6 @@ htdocs/compta/journal/sellsjournal.php
 htdocs/compta/paiement.php
 htdocs/compta/payment_sc/card.php
 htdocs/compta/accounting-files.php
-htdocs/compta/clients.php
 htdocs/compta/sociales/list.php
 htdocs/compta/sociales/class/chargesociales.class.php
 htdocs/compta/sociales/class/cchargesociales.class.php
@@ -7494,7 +7527,6 @@ htdocs/admin/tools/export.php
 htdocs/admin/tools/update.php
 htdocs/admin/tools/index.php
 htdocs/admin/tools/ui/class/documentation.class.php
-htdocs/admin/tools/ui/experimental/experiments/input-feedback/index.php
 htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-context.umd.js
 htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-tool.seteventmessage.js
 htdocs/admin/tools/ui/experimental/experiments/dolibarr-context/assets/dolibarr-context.mock.js
@@ -7508,6 +7540,7 @@ htdocs/admin/tools/ui/resources/index.php
 htdocs/admin/tools/ui/content/intuitive-table-row-select.php
 htdocs/admin/tools/ui/content/tables.php
 htdocs/admin/tools/ui/content/titles.php
+htdocs/admin/tools/ui/content/input-feedback.php
 htdocs/admin/tools/ui/content/index.php
 htdocs/admin/tools/ui/content/freeze-tooltip.php
 htdocs/admin/tools/ui/index.php
@@ -14157,6 +14190,7 @@ htdocs/takepos/send.php
 htdocs/takepos/css/pos.css.php
 htdocs/takepos/phone.php
 htdocs/takepos/reduction.php
+htdocs/takepos/class/dolreceiptprinter.class.php
 htdocs/takepos/public/auto_order.php
 htdocs/takepos/public/js/script.js
 htdocs/takepos/public/menu.php
