@@ -3733,6 +3733,10 @@ plugins/woocommerce/changelog/fix-62340
 woocommerce/changelog/fix-62340
 changelog/fix-62340
 fix-62340
+plugins/woocommerce/changelog/fix-refund-float-compare
+woocommerce/changelog/fix-refund-float-compare
+changelog/fix-refund-float-compare
+fix-refund-float-compare
 plugins/woocommerce/changelog/63405-add-store-api-formatted-weight-dimensions
 woocommerce/changelog/63405-add-store-api-formatted-weight-dimensions
 changelog/63405-add-store-api-formatted-weight-dimensions
@@ -3773,6 +3777,10 @@ plugins/woocommerce/changelog/deprecate-hpos-sync-on-read
 woocommerce/changelog/deprecate-hpos-sync-on-read
 changelog/deprecate-hpos-sync-on-read
 deprecate-hpos-sync-on-read
+plugins/woocommerce/changelog/performance-add-indexes-on-shipping-tables
+woocommerce/changelog/performance-add-indexes-on-shipping-tables
+changelog/performance-add-indexes-on-shipping-tables
+performance-add-indexes-on-shipping-tables
 plugins/woocommerce/changelog/wooprd-1726-customer-creation-issue-depending-on-password-settings
 woocommerce/changelog/wooprd-1726-customer-creation-issue-depending-on-password-settings
 changelog/wooprd-1726-customer-creation-issue-depending-on-password-settings

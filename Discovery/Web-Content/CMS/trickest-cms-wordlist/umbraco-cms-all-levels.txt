@@ -7569,6 +7569,11 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Core/AttemptTests.cs
 Umbraco.Tests.UnitTests/Umbraco.Core/AttemptTests.cs
 Umbraco.Core/AttemptTests.cs
 AttemptTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Strings/DefaultUrlSegmentProviderTests.cs
+Umbraco.Tests.UnitTests/Umbraco.Core/Strings/DefaultUrlSegmentProviderTests.cs
+Umbraco.Core/Strings/DefaultUrlSegmentProviderTests.cs
+Strings/DefaultUrlSegmentProviderTests.cs
+DefaultUrlSegmentProviderTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/CoreXml/FrameworkXmlTests.cs
 Umbraco.Tests.UnitTests/Umbraco.Core/CoreXml/FrameworkXmlTests.cs
 Umbraco.Core/CoreXml/FrameworkXmlTests.cs
