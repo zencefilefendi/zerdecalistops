@@ -8519,6 +8519,12 @@ Umbraco.Infrastructure/Persistence/Repositories/SimilarNodeNameTests.cs
 Persistence/Repositories/SimilarNodeNameTests.cs
 Repositories/SimilarNodeNameTests.cs
 SimilarNodeNameTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Persistence/Repositories/DocumentRepositoryTests.cs
+Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Persistence/Repositories/DocumentRepositoryTests.cs
+Umbraco.Infrastructure/Persistence/Repositories/DocumentRepositoryTests.cs
+Persistence/Repositories/DocumentRepositoryTests.cs
+Repositories/DocumentRepositoryTests.cs
+DocumentRepositoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Persistence/Mappers/PropertyTypeMapperTest.cs
 Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Persistence/Mappers/PropertyTypeMapperTest.cs
 Umbraco.Infrastructure/Persistence/Mappers/PropertyTypeMapperTest.cs
