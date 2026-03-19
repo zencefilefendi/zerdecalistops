@@ -47083,6 +47083,13 @@ tests/src/Functional/LocaleLocaleLookupTest.php
 src/Functional/LocaleLocaleLookupTest.php
 Functional/LocaleLocaleLookupTest.php
 LocaleLocaleLookupTest.php
+core/modules/locale/tests/src/Functional/LocaleFileHashTest.php
+modules/locale/tests/src/Functional/LocaleFileHashTest.php
+locale/tests/src/Functional/LocaleFileHashTest.php
+tests/src/Functional/LocaleFileHashTest.php
+src/Functional/LocaleFileHashTest.php
+Functional/LocaleFileHashTest.php
+LocaleFileHashTest.php
 core/modules/locale/tests/src/Functional/LocaleExportTest.php
 modules/locale/tests/src/Functional/LocaleExportTest.php
 locale/tests/src/Functional/LocaleExportTest.php
