@@ -208361,6 +208361,12 @@ Magento/Checkout/Observer/CspPolicyObserver.php
 Checkout/Observer/CspPolicyObserver.php
 Observer/CspPolicyObserver.php
 CspPolicyObserver.php
+app/code/Magento/Checkout/Observer/CatalogRuleSaveAfterObserver.php
+code/Magento/Checkout/Observer/CatalogRuleSaveAfterObserver.php
+Magento/Checkout/Observer/CatalogRuleSaveAfterObserver.php
+Checkout/Observer/CatalogRuleSaveAfterObserver.php
+Observer/CatalogRuleSaveAfterObserver.php
+CatalogRuleSaveAfterObserver.php
 app/code/Magento/Checkout/Observer/LoadCustomerQuoteObserver.php
 code/Magento/Checkout/Observer/LoadCustomerQuoteObserver.php
 Magento/Checkout/Observer/LoadCustomerQuoteObserver.php
