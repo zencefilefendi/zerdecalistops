@@ -3497,6 +3497,10 @@ plugins/woocommerce/changelog/stomail-7801-payment-gateway-enabled-email-styling
 woocommerce/changelog/stomail-7801-payment-gateway-enabled-email-styling
 changelog/stomail-7801-payment-gateway-enabled-email-styling
 stomail-7801-payment-gateway-enabled-email-styling
+plugins/woocommerce/changelog/63765-wooplug-6354-order-fulfillments-email-subject-line-doesnt-use-correct
+woocommerce/changelog/63765-wooplug-6354-order-fulfillments-email-subject-line-doesnt-use-correct
+changelog/63765-wooplug-6354-order-fulfillments-email-subject-line-doesnt-use-correct
+63765-wooplug-6354-order-fulfillments-email-subject-line-doesnt-use-correct
 plugins/woocommerce/changelog/63334-add-weight-dimensions-to-store-api
 woocommerce/changelog/63334-add-weight-dimensions-to-store-api
 changelog/63334-add-weight-dimensions-to-store-api
@@ -10151,6 +10155,13 @@ php/includes/emails/class-wc-email-header-template-test.php
 includes/emails/class-wc-email-header-template-test.php
 emails/class-wc-email-header-template-test.php
 class-wc-email-header-template-test.php
+plugins/woocommerce/tests/php/includes/emails/class-wc-email-customer-fulfillment-created-test.php
+woocommerce/tests/php/includes/emails/class-wc-email-customer-fulfillment-created-test.php
+tests/php/includes/emails/class-wc-email-customer-fulfillment-created-test.php
+php/includes/emails/class-wc-email-customer-fulfillment-created-test.php
+includes/emails/class-wc-email-customer-fulfillment-created-test.php
+emails/class-wc-email-customer-fulfillment-created-test.php
+class-wc-email-customer-fulfillment-created-test.php
 plugins/woocommerce/tests/php/includes/emails/class-wc-email-customer-partially-refunded-order-test.php
 woocommerce/tests/php/includes/emails/class-wc-email-customer-partially-refunded-order-test.php
 tests/php/includes/emails/class-wc-email-customer-partially-refunded-order-test.php

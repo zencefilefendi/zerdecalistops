@@ -49,6 +49,7 @@ extensions/emoji/locale/en.yml
 extensions/emoji/LICENSE
 extensions/emoji/.gitattributes
 extensions/emoji/icon.svg
+extensions/emoji/migrations/2026_03_22_000000_remove_old_emoji_cdn_setting.php
 extensions/emoji/migrations/2018_09_29_060444_replace_emoji_shorcuts_with_unicode.php
 extensions/emoji/js/dist-typings/common/cdn.d.ts
 extensions/emoji/js/dist-typings/admin/index.d.ts
@@ -67,6 +68,7 @@ extensions/emoji/js/dist/forum.js.LICENSE.txt
 extensions/emoji/js/dist/admin.js
 extensions/emoji/js/dist/forum.js.map
 extensions/emoji/js/dist/forum.js
+extensions/emoji/js/dist/admin.js.LICENSE.txt
 extensions/emoji/js/dist/forum/emojiMap.js
 extensions/emoji/js/dist/forum/emojiMap.js.map
 extensions/emoji/js/dist/admin.js.map
@@ -1005,7 +1007,9 @@ extensions/subscriptions/tests/phpunit.integration.xml
 extensions/subscriptions/tests/phpunit.unit.xml
 extensions/subscriptions/tests/integration/setup.php
 extensions/subscriptions/tests/integration/api/discussions/ReplyNotificationTest.php
+extensions/subscriptions/tests/integration/api/discussions/FollowAfterCreateTest.php
 extensions/subscriptions/tests/integration/api/discussions/SubscribeTest.php
+extensions/subscriptions/tests/integration/api/discussions/FollowAfterReplyTest.php
 extensions/subscriptions/CHANGELOG.md
 extensions/subscriptions/less/forum.less
 extensions/subscriptions/locale/en.yml
@@ -1018,6 +1022,7 @@ extensions/subscriptions/src/Listener/RestoreNotificationWhenPostIsRestored.php
 extensions/subscriptions/src/Listener/SendNotificationWhenReplyIsPosted.php
 extensions/subscriptions/src/Listener/SaveSubscriptionToDatabase.php
 extensions/subscriptions/src/Listener/FollowAfterReply.php
+extensions/subscriptions/src/Listener/FollowAfterCreate.php
 extensions/subscriptions/src/Listener/DeleteNotificationWhenPostIsHiddenOrDeleted.php
 extensions/subscriptions/src/Api/UserResourceFields.php
 extensions/subscriptions/src/Notification/FilterVisiblePostsBeforeSending.php
@@ -1594,6 +1599,7 @@ framework/core/tests/phpunit.unit.xml
 framework/core/tests/integration/frontend/FontAwesomeLoadingTest.php
 framework/core/tests/integration/middleware/ReferrerPolicyTest.php
 framework/core/tests/integration/middleware/ContentTypeOptionsTest.php
+framework/core/tests/integration/settings/DefaultSettingsTest.php
 framework/core/tests/integration/setup.php
 framework/core/tests/integration/slugger/SlugDriverTest.php
 framework/core/tests/integration/queue/QueueCommandTest.php
@@ -1626,6 +1632,7 @@ framework/core/tests/integration/api/notifications/ListTest.php
 framework/core/tests/integration/api/authentication/WithTokenTest.php
 framework/core/tests/integration/api/authentication/WithApiKeyTest.php
 framework/core/tests/integration/api/announcements/ListTest.php
+framework/core/tests/integration/api/groups/OrderTest.php
 framework/core/tests/integration/api/groups/ListTest.php
 framework/core/tests/integration/api/groups/CreateTest.php
 framework/core/tests/integration/api/groups/ShowTest.php
@@ -2230,6 +2237,7 @@ framework/core/src/Api/Controller/ShowForumController.php
 framework/core/src/Api/Controller/ClearCacheController.php
 framework/core/src/Api/Controller/SetSettingsController.php
 framework/core/src/Api/Controller/ReadAllNotificationsController.php
+framework/core/src/Api/Controller/OrderGroupsController.php
 framework/core/src/Api/Controller/DeleteLogoDarkModeController.php
 framework/core/src/Api/Controller/DeleteLogoController.php
 framework/core/src/Api/Controller/UploadLogoController.php
@@ -2413,6 +2421,7 @@ framework/core/migrations/2018_01_30_222900_change_users_rename_columns.php
 framework/core/migrations/2024_05_05_000000_add_sqlite_keys.php
 framework/core/migrations/2024_05_07_000001_convert_data_to_json_in_notifications.php
 framework/core/migrations/2018_09_15_043621_add_posts_indices.php
+framework/core/migrations/2026_01_24_000000_add_position_to_groups_table.php
 framework/core/migrations/2015_02_24_000000_create_email_tokens_table.php
 framework/core/migrations/2018_01_18_135100_change_posts_add_foreign_keys.php
 framework/core/migrations/2015_02_24_000000_create_config_table.php
@@ -2494,6 +2503,7 @@ framework/core/js/tests/integration/common/extenders/Store.test.ts
 framework/core/js/tests/integration/common/extenders/Model.test.ts
 framework/core/js/tests/integration/common/extenders/Search.test.ts
 framework/core/js/tests/integration/common/extenders/Notification.test.ts
+framework/core/js/tests/integration/admin/Application.test.ts
 framework/core/js/tests/integration/admin/components/AppearencePage.test.ts
 framework/core/js/tests/integration/admin/components/DashboardPage.test.ts
 framework/core/js/tests/integration/admin/components/PermissionsPage.test.ts
@@ -2530,6 +2540,7 @@ framework/core/js/dist-typings/common/utils/mixin.d.ts
 framework/core/js/dist-typings/common/utils/styleSelectedText.d.ts
 framework/core/js/dist-typings/common/utils/abbreviateNumber.d.ts
 framework/core/js/dist-typings/common/utils/subclassOf.d.ts
+framework/core/js/dist-typings/common/utils/sortGroups.d.ts
 framework/core/js/dist-typings/common/utils/stringToColor.d.ts
 framework/core/js/dist-typings/common/utils/formatNumber.d.ts
 framework/core/js/dist-typings/common/utils/Stream.d.ts
@@ -2561,7 +2572,6 @@ framework/core/js/dist-typings/common/utils/string.d.ts
 framework/core/js/dist-typings/common/utils/liveHumanTimes.d.ts
 framework/core/js/dist-typings/common/utils/Drawer.d.ts
 framework/core/js/dist-typings/common/utils/isObject.d.ts
-framework/core/js/dist-typings/common/utils/arrayFlatPolyfill.d.ts
 framework/core/js/dist-typings/common/utils/EventEmitter.d.ts
 framework/core/js/dist-typings/common/utils/GambitsAutocomplete.d.ts
 framework/core/js/dist-typings/common/utils/BasicEditorDriver.d.ts
@@ -2679,6 +2689,7 @@ framework/core/js/dist-typings/admin/components/ExtensionsWidget.d.ts
 framework/core/js/dist-typings/admin/components/AdvancedPage.d.ts
 framework/core/js/dist-typings/admin/components/HeaderSecondary.d.ts
 framework/core/js/dist-typings/admin/components/PermissionGrid.d.ts
+framework/core/js/dist-typings/admin/components/GroupBar.d.ts
 framework/core/js/dist-typings/admin/components/AnnouncementItem.d.ts
 framework/core/js/dist-typings/admin/components/EditGroupModal.d.ts
 framework/core/js/dist-typings/admin/components/AdminNav.d.ts
@@ -2877,7 +2888,6 @@ framework/core/js/src/common/utils/isObject.ts
 framework/core/js/src/common/utils/stringToColor.ts
 framework/core/js/src/common/utils/ItemList.ts
 framework/core/js/src/common/utils/classList.ts
-framework/core/js/src/common/utils/arrayFlatPolyfill.ts
 framework/core/js/src/common/utils/mixin.js
 framework/core/js/src/common/utils/string.ts
 framework/core/js/src/common/utils/bidi.js
@@ -2891,6 +2901,7 @@ framework/core/js/src/common/utils/subclassOf.js
 framework/core/js/src/common/utils/setRouteWithForcedRefresh.ts
 framework/core/js/src/common/utils/RequestError.ts
 framework/core/js/src/common/utils/abbreviateNumber.ts
+framework/core/js/src/common/utils/sortGroups.ts
 framework/core/js/src/common/utils/EventEmitter.ts
 framework/core/js/src/common/utils/escapeRegExp.ts
 framework/core/js/src/common/utils/AutocompleteReader.ts
@@ -3015,6 +3026,7 @@ framework/core/js/src/admin/components/AnnouncementItem.tsx
 framework/core/js/src/admin/components/ExtensionsWidget.js
 framework/core/js/src/admin/components/GeneralSearchSource.tsx
 framework/core/js/src/admin/components/AnnouncementsWidget.tsx
+framework/core/js/src/admin/components/GroupBar.tsx
 framework/core/js/src/admin/components/StatusWidgetItem.tsx
 framework/core/js/src/admin/components/EditCustomFooterModal.tsx
 framework/core/js/src/admin/components/EditGroupModal.tsx
