@@ -19978,6 +19978,13 @@ Product/DataAbstractionLayer/StockUpdate/TestStockUpdateFilter.php
 DataAbstractionLayer/StockUpdate/TestStockUpdateFilter.php
 StockUpdate/TestStockUpdateFilter.php
 TestStockUpdateFilter.php
+tests/unit/Core/Content/Product/DataAbstractionLayer/SearchKeywordUpdaterTest.php
+unit/Core/Content/Product/DataAbstractionLayer/SearchKeywordUpdaterTest.php
+Core/Content/Product/DataAbstractionLayer/SearchKeywordUpdaterTest.php
+Content/Product/DataAbstractionLayer/SearchKeywordUpdaterTest.php
+Product/DataAbstractionLayer/SearchKeywordUpdaterTest.php
+DataAbstractionLayer/SearchKeywordUpdaterTest.php
+SearchKeywordUpdaterTest.php
 tests/unit/Core/Content/Product/DataAbstractionLayer/ProductStreamUpdaterTest.php
 unit/Core/Content/Product/DataAbstractionLayer/ProductStreamUpdaterTest.php
 Core/Content/Product/DataAbstractionLayer/ProductStreamUpdaterTest.php
@@ -156335,6 +156342,12 @@ Resources/config/packages/framework.yaml
 config/packages/framework.yaml
 packages/framework.yaml
 framework.yaml
+src/Elasticsearch/Resources/config/packages/shopware.php
+Elasticsearch/Resources/config/packages/shopware.php
+Resources/config/packages/shopware.php
+config/packages/shopware.php
+packages/shopware.php
+shopware.php
 src/Elasticsearch/Resources/config/packages/monolog.yaml
 Elasticsearch/Resources/config/packages/monolog.yaml
 Resources/config/packages/monolog.yaml
