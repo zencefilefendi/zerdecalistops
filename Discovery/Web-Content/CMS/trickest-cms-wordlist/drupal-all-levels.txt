@@ -6768,11 +6768,6 @@ modules/help/help_topics/core.translations.html.twig
 help/help_topics/core.translations.html.twig
 help_topics/core.translations.html.twig
 core.translations.html.twig
-core/modules/help/help_topics/core.settings_tray.html.twig
-modules/help/help_topics/core.settings_tray.html.twig
-help/help_topics/core.settings_tray.html.twig
-help_topics/core.settings_tray.html.twig
-core.settings_tray.html.twig
 core/modules/help/help_topics/core.config_overview.html.twig
 modules/help/help_topics/core.config_overview.html.twig
 help/help_topics/core.config_overview.html.twig
@@ -7045,6 +7040,11 @@ settings_tray/src/Access/BlockPluginHasSettingsTrayFormAccessCheck.php
 src/Access/BlockPluginHasSettingsTrayFormAccessCheck.php
 Access/BlockPluginHasSettingsTrayFormAccessCheck.php
 BlockPluginHasSettingsTrayFormAccessCheck.php
+core/modules/settings_tray/help_topics/settings_tray.settings_tray.html.twig
+modules/settings_tray/help_topics/settings_tray.settings_tray.html.twig
+settings_tray/help_topics/settings_tray.settings_tray.html.twig
+help_topics/settings_tray.settings_tray.html.twig
+settings_tray.settings_tray.html.twig
 core/modules/settings_tray/js/settings_tray.js
 modules/settings_tray/js/settings_tray.js
 settings_tray/js/settings_tray.js
