@@ -7786,6 +7786,11 @@ Umbraco.Tests.UnitTests/Umbraco.Core/Routing/ContentFinderByKeyTests.cs
 Umbraco.Core/Routing/ContentFinderByKeyTests.cs
 Routing/ContentFinderByKeyTests.cs
 ContentFinderByKeyTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Routing/NewDefaultUrlProviderTests.cs
+Umbraco.Tests.UnitTests/Umbraco.Core/Routing/NewDefaultUrlProviderTests.cs
+Umbraco.Core/Routing/NewDefaultUrlProviderTests.cs
+Routing/NewDefaultUrlProviderTests.cs
+NewDefaultUrlProviderTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Routing/ContentFinderByRedirectUrlTests.cs
 Umbraco.Tests.UnitTests/Umbraco.Core/Routing/ContentFinderByRedirectUrlTests.cs
 Umbraco.Core/Routing/ContentFinderByRedirectUrlTests.cs
