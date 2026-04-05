@@ -3614,6 +3614,10 @@ plugins/woocommerce/changelog/performance-order-count-action-enhancements
 woocommerce/changelog/performance-order-count-action-enhancements
 changelog/performance-order-count-action-enhancements
 performance-order-count-action-enhancements
+plugins/woocommerce/changelog/63972-mikejolley-fix-stale-pending-delete
+woocommerce/changelog/63972-mikejolley-fix-stale-pending-delete
+changelog/63972-mikejolley-fix-stale-pending-delete
+63972-mikejolley-fix-stale-pending-delete
 plugins/woocommerce/changelog/fix-dont-render-empty-store-notices
 woocommerce/changelog/fix-dont-render-empty-store-notices
 changelog/fix-dont-render-empty-store-notices
@@ -3642,6 +3646,10 @@ plugins/woocommerce/changelog/fix-empty-search-orderby
 woocommerce/changelog/fix-empty-search-orderby
 changelog/fix-empty-search-orderby
 fix-empty-search-orderby
+plugins/woocommerce/changelog/2026-04-01-13-16-19-880401
+woocommerce/changelog/2026-04-01-13-16-19-880401
+changelog/2026-04-01-13-16-19-880401
+2026-04-01-13-16-19-880401
 plugins/woocommerce/changelog/fix-select-control-deprecated-size-warning
 woocommerce/changelog/fix-select-control-deprecated-size-warning
 changelog/fix-select-control-deprecated-size-warning
