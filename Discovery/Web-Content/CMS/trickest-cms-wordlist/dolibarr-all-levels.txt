@@ -4543,6 +4543,11 @@ install/mysql/data/llx_c_type_container-website.sql
 mysql/data/llx_c_type_container-website.sql
 data/llx_c_type_container-website.sql
 llx_c_type_container-website.sql
+htdocs/install/mysql/data/llx_accounting_account_nc.sql
+install/mysql/data/llx_accounting_account_nc.sql
+mysql/data/llx_accounting_account_nc.sql
+data/llx_accounting_account_nc.sql
+llx_accounting_account_nc.sql
 htdocs/install/mysql/data/llx_accounting_category-accounting.sql
 install/mysql/data/llx_accounting_category-accounting.sql
 mysql/data/llx_accounting_category-accounting.sql
@@ -66646,6 +66651,12 @@ tools/ui/dolibarr-context/index.php
 ui/dolibarr-context/index.php
 dolibarr-context/index.php
 index.php
+htdocs/admin/tools/ui/dolibarr-context/knows-hooks.php
+admin/tools/ui/dolibarr-context/knows-hooks.php
+tools/ui/dolibarr-context/knows-hooks.php
+ui/dolibarr-context/knows-hooks.php
+dolibarr-context/knows-hooks.php
+knows-hooks.php
 htdocs/admin/tools/ui/dolibarr-context/langs-tool.php
 admin/tools/ui/dolibarr-context/langs-tool.php
 tools/ui/dolibarr-context/langs-tool.php

@@ -1058,6 +1058,7 @@ htdocs/install/mysql/data/llx_c_chargesociales.sql
 htdocs/install/mysql/data/llx_c_currencies.sql
 htdocs/install/mysql/data/llx_c_effectif.sql
 htdocs/install/mysql/data/llx_c_type_container-website.sql
+htdocs/install/mysql/data/llx_accounting_account_nc.sql
 htdocs/install/mysql/data/llx_accounting_category-accounting.sql
 htdocs/install/mysql/data/llx_c_shipment_mode.sql
 htdocs/install/mysql/data/llx_c_format_cards.sql
@@ -13319,6 +13320,7 @@ htdocs/admin/tools/ui/resources/index.php
 htdocs/admin/tools/ui/resources/contributing.php
 htdocs/admin/tools/ui/dolibarr-context/inc_seteventmessage.php
 htdocs/admin/tools/ui/dolibarr-context/index.php
+htdocs/admin/tools/ui/dolibarr-context/knows-hooks.php
 htdocs/admin/tools/ui/dolibarr-context/langs-tool.php
 htdocs/admin/tools/ui/content/intuitive-table-row-select.php
 htdocs/admin/tools/ui/content/freeze-tooltip.php
