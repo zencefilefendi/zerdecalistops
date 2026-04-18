@@ -1792,6 +1792,7 @@ packages/core/types/src/modules/fetch.ts
 packages/core/types/src/modules/sanitizers.ts
 packages/core/types/src/modules/core-store.ts
 packages/core/types/src/modules/entity-validator.ts
+packages/core/types/src/modules/ai.ts
 packages/core/types/src/modules/documents/service-instance.ts
 packages/core/types/src/modules/documents/index.ts
 packages/core/types/src/modules/documents/middleware.ts
@@ -2817,6 +2818,7 @@ packages/core/content-manager/server/src/middlewares/routing.ts
 packages/core/content-manager/server/src/controllers/init.ts
 packages/core/content-manager/server/src/controllers/index.ts
 packages/core/content-manager/server/src/controllers/__tests__/relations.test.ts
+packages/core/content-manager/server/src/controllers/__tests__/countDraftRelations.test.ts
 packages/core/content-manager/server/src/controllers/__tests__/status-lookup.test.ts
 packages/core/content-manager/server/src/controllers/__tests__/content-types.test.ts
 packages/core/content-manager/server/src/controllers/relations.ts
@@ -3345,6 +3347,11 @@ packages/core/admin/server/src/policies/index.ts
 packages/core/admin/server/src/policies/isTelemetryEnabled.ts
 packages/core/admin/server/src/policies/isAuthenticatedAdmin.ts
 packages/core/admin/server/src/policies/hasPermissions.ts
+packages/core/admin/server/src/ai/routes/ai.ts
+packages/core/admin/server/src/ai/controllers/__tests__/ai.test.ts
+packages/core/admin/server/src/ai/controllers/ai.ts
+packages/core/admin/server/src/ai/services/__tests__/ai.test.ts
+packages/core/admin/server/src/ai/services/ai.ts
 packages/core/admin/server/src/validation/project-settings.ts
 packages/core/admin/server/src/validation/permission.ts
 packages/core/admin/server/src/validation/action-provider.ts
@@ -3472,11 +3479,6 @@ packages/core/admin/ee/server/src/audit-logs/controllers/audit-logs.ts
 packages/core/admin/ee/server/src/audit-logs/services/lifecycles.ts
 packages/core/admin/ee/server/src/audit-logs/services/audit-logs.ts
 packages/core/admin/ee/server/src/audit-logs/services/__tests__/audit-logs.test.ts
-packages/core/admin/ee/server/src/ai/routes/ai.ts
-packages/core/admin/ee/server/src/ai/containers/__tests__/ai.test.ts
-packages/core/admin/ee/server/src/ai/containers/ai.ts
-packages/core/admin/ee/server/src/ai/controllers/__tests__/ai.test.ts
-packages/core/admin/ee/server/src/ai/controllers/ai.ts
 packages/core/admin/ee/server/src/validation/user.ts
 packages/core/admin/ee/server/src/validation/authentication.ts
 packages/core/admin/ee/server/src/validation/role.ts
@@ -4020,10 +4022,18 @@ packages/core/strapi/src/cli/commands/import/__tests__/import.test.ts
 packages/core/strapi/src/cli/commands/import/action.ts
 packages/core/strapi/src/cli/commands/import/command.ts
 packages/core/strapi/src/cli/commands/controllers/list.ts
+packages/core/strapi/src/cli/commands/admin/block-user.ts
 packages/core/strapi/src/cli/commands/admin/reset-user-password.ts
 packages/core/strapi/src/cli/commands/admin/create-user.ts
 packages/core/strapi/src/cli/commands/admin/__tests__/create-user.test.ts
+packages/core/strapi/src/cli/commands/admin/__tests__/active-user.test.ts
 packages/core/strapi/src/cli/commands/admin/__tests__/reset-user-password.test.ts
+packages/core/strapi/src/cli/commands/admin/__tests__/delete-user.test.ts
+packages/core/strapi/src/cli/commands/admin/__tests__/list-users.test.ts
+packages/core/strapi/src/cli/commands/admin/__tests__/block-user.test.ts
+packages/core/strapi/src/cli/commands/admin/active-user.ts
+packages/core/strapi/src/cli/commands/admin/list-users.ts
+packages/core/strapi/src/cli/commands/admin/delete-user.ts
 packages/core/strapi/src/cli/commands/templates/generate.ts
 packages/core/strapi/src/cli/commands/console.ts
 packages/core/strapi/src/cli/commands/services/list.ts
@@ -4182,6 +4192,7 @@ packages/core/core/src/providers/webhooks.ts
 packages/core/core/src/providers/cron.ts
 packages/core/core/src/providers/telemetry.ts
 packages/core/core/src/providers/admin.ts
+packages/core/core/src/providers/ai.ts
 packages/core/core/src/providers/provider.ts
 packages/core/core/src/middlewares/errors.ts
 packages/core/core/src/middlewares/ip.ts
@@ -4254,6 +4265,7 @@ packages/core/core/src/services/entity-validator/blocks-validator.ts
 packages/core/core/src/services/content-source-maps.ts
 packages/core/core/src/services/custom-fields.ts
 packages/core/core/src/services/reloader.ts
+packages/core/core/src/services/__tests__/ai.test.ts
 packages/core/core/src/services/__tests__/core-store.test.ts
 packages/core/core/src/services/__tests__/event-hub.test.ts
 packages/core/core/src/services/__tests__/session-manager-jwt-config.test.ts
@@ -4277,6 +4289,7 @@ packages/core/core/src/services/utils/dynamic-zones.ts
 packages/core/core/src/services/utils/conditional-fields.ts
 packages/core/core/src/services/utils/__tests__/conditional-fields.test.ts
 packages/core/core/src/services/core-store.ts
+packages/core/core/src/services/ai.ts
 packages/core/core/src/services/fs.ts
 packages/core/core/src/services/worker-queue.ts
 packages/core/core/src/services/webhook-store.ts
@@ -4566,9 +4579,12 @@ tests/cli/tests/strapi/strapi/routes-list.test.cli.js
 tests/cli/tests/strapi/strapi/openapi-generate.test.cli.ts
 tests/cli/tests/strapi/strapi/services-list.test.cli.js
 tests/cli/tests/strapi/strapi/version.test.cli.js
+tests/cli/tests/strapi/strapi/block-user.test.cli.js
+tests/cli/tests/strapi/strapi/active-user.test.cli.js
 tests/cli/tests/strapi/strapi/__snapshots__/hooks-list.test.cli.js.snap
 tests/cli/tests/strapi/strapi/__snapshots__/routes-list.test.cli.js.snap
 tests/cli/tests/strapi/strapi/__snapshots__/controllers-list.test.cli.js.snap
+tests/cli/tests/strapi/strapi/__snapshots__/list-users.test.cli.js.snap
 tests/cli/tests/strapi/strapi/__snapshots__/content-types-list.test.cli.js.snap
 tests/cli/tests/strapi/strapi/__snapshots__/middlewares-list.test.cli.js.snap
 tests/cli/tests/strapi/strapi/__snapshots__/services-list.test.cli.js.snap
@@ -4578,9 +4594,11 @@ tests/cli/tests/strapi/strapi/README.md
 tests/cli/tests/strapi/strapi/policies-list.test.cli.js
 tests/cli/tests/strapi/strapi/create-user.test.cli.js
 tests/cli/tests/strapi/strapi/controllers-list.test.cli.js
+tests/cli/tests/strapi/strapi/delete-user.test.cli.js
 tests/cli/tests/strapi/strapi/content-types-list.test.cli.js
 tests/cli/tests/strapi/strapi/middlewares-list.test.cli.js
 tests/cli/tests/strapi/strapi/hooks-list.test.cli.js
+tests/cli/tests/strapi/strapi/list-users.test.cli.js
 tests/api/plugins/i18n/content-api/content-types.test.api.js
 tests/api/plugins/i18n/content-api/content-api.test.api.js
 tests/api/plugins/i18n/content-manager/non-localized-fields.test.api.js
@@ -4629,6 +4647,7 @@ tests/api/core/review-workflows/review-workflows-homepage.test.api.ts
 tests/api/core/review-workflows/review-workflows-content-types.test.api.ts
 tests/api/core/review-workflows/review-workflows.test.api.ts
 tests/api/core/review-workflows/review-workflows-stage-permissions.test.api.ts
+tests/api/core/upload/content-api/upload-signing.test.api.js
 tests/api/core/upload/content-api/upload.test.api.js
 tests/api/core/upload/content-api/upload-automatic-folder.test.api.js
 tests/api/core/upload/content-api/private-file-signing.test.api.js

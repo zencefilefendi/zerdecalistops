@@ -9120,9 +9120,11 @@ src/Administration/Resources/app/administration/src/core/consent/broadcast-chang
 src/Administration/Resources/app/administration/src/core/consent/Readme.md
 src/Administration/Resources/app/administration/src/core/consent/events.spec.js
 src/Administration/Resources/app/administration/src/core/consent/consent.store.ts
+src/Administration/Resources/app/administration/src/core/consent/sdk-handler.spec.js
 src/Administration/Resources/app/administration/src/core/consent/broadcast-changes.spec.js
 src/Administration/Resources/app/administration/src/core/consent/consent.api.service.spec.js
 src/Administration/Resources/app/administration/src/core/consent/consent.api.service.ts
+src/Administration/Resources/app/administration/src/core/consent/sdk-handler.ts
 src/Administration/Resources/app/administration/src/core/consent/consent.store.spec.js
 src/Administration/Resources/app/administration/src/core/consent/events.ts
 src/Administration/Resources/app/administration/src/core/telemetry/Readme.md
@@ -9634,6 +9636,10 @@ src/Administration/Resources/app/administration/src/app/component/structure/sw-a
 src/Administration/Resources/app/administration/src/app/component/structure/sw-admin-menu-item/sw-admin-menu-item.html.twig
 src/Administration/Resources/app/administration/src/app/component/structure/sw-admin-menu-item/sw-admin-menu-item.spec.js
 src/Administration/Resources/app/administration/src/app/component/structure/sw-admin-menu-item/index.js
+src/Administration/Resources/app/administration/src/app/component/structure/sw-request-consent-modal/sw-request-consent-modal.spec.js
+src/Administration/Resources/app/administration/src/app/component/structure/sw-request-consent-modal/index.ts
+src/Administration/Resources/app/administration/src/app/component/structure/sw-request-consent-modal/sw-request-consent-modal.html.twig
+src/Administration/Resources/app/administration/src/app/component/structure/sw-request-consent-modal/sw-request-consent-modal.scss
 src/Administration/Resources/app/administration/src/app/component/structure/sw-search-more-results/sw-search-more-results.html.twig
 src/Administration/Resources/app/administration/src/app/component/structure/sw-search-more-results/index.js
 src/Administration/Resources/app/administration/src/app/component/structure/sw-search-more-results/sw-search-more-results.scss
@@ -12603,6 +12609,7 @@ src/Core/Test/Stub/Doctrine/QueryBuilderDataExtractor.php
 src/Core/Test/Stub/Doctrine/FakeQueryBuilder.php
 src/Core/Test/Stub/Translator/StaticTranslator.php
 src/Core/Test/Stub/Flow/DummyEvent.php
+src/Core/Test/Stub/Rule/CountingTrueRule.php
 src/Core/Test/Stub/Rule/TrueRule.php
 src/Core/Test/Stub/Rule/FalseRule.php
 src/Core/Test/Stub/Redis/RedisMultiWrapper.php
@@ -13017,6 +13024,7 @@ src/Core/Migration/V6_7/Migration1754398573ChangeAllLineItemsRuleValueType.php
 src/Core/Migration/V6_7/Migration1756068711FixOrderAddressFirstNameLength.php
 src/Core/Migration/V6_7/Migration1733136208AddH1ToCmsCategoryListing.php
 src/Core/Migration/V6_7/Migration1720603803RemoveDefaultPaymentMethodRule.php
+src/Core/Migration/V6_7/Migration1774366000MigrateLineItemStockRuleCondition.php
 src/Core/Migration/V6_7/Migration1773112488SetDefaultCmsPageIdForCategories.php
 src/Core/Migration/V6_7/Migration1765376847SetDefaultSystemConfigLoadPreviewsOnSearch.php
 src/Core/Migration/V6_7/Migration1775200001IncreaseProductDisplayGroupLength.php
@@ -13075,6 +13083,7 @@ src/Core/Migration/V6_7/Migration1756068712FixOrderAddressLastNameLength.php
 src/Core/Migration/V6_7/Migration1773329152AddAgenticAiSalesChannelType.php
 src/Core/Migration/V6_7/Migration1770705203AddPaymentMethodChangedFlowAndMailTemplate.php
 src/Core/Migration/V6_7/Migration1737472122TokenUser.php
+src/Core/Migration/V6_7/Migration1773420826AddSalutationPositionColumn.php
 src/Core/Migration/V6_7/Migration1742199552SalesChannelMeasurementUnits.php
 src/Core/Migration/V6_7/Migration1743151679AddContextGatewayUrl.php
 src/Core/Migration/V6_7/Migration1771342632AddCorruptedMediaHandlerIndices.php
@@ -18996,6 +19005,7 @@ adr/2023-01-30-image-lazy-loading.md
 adr/2026-03-18-app-url-verify-utils.md
 adr/2021-08-31-refactor-admin-build-process-to-webpack-multi-compiler-mode.md
 adr/2025-11-14-introduce-product-type-and-deprecate-states.md
+adr/2026-03-19-new-document-generation-extension-points.md
 adr/2022-11-16-deprecate-csrf.md
 adr/2023-02-01-app-script-product-pricing.md
 adr/2022-01-06-custom-app-api-endpoints.md
@@ -19033,6 +19043,7 @@ adr/2020-06-25-implement-architecture-decision-records.md
 adr/2023-01-16-npm-packages-pre-release-versions.md
 adr/2020-08-12-implement-app-system-inside-platform.md
 adr/2022-06-27-providing-the-admin-extension-sdk.md
+adr/2026-03-18-new-document-generation-architecture.md
 adr/2021-08-10-storefront-coding-standards.md
 adr/2024-03-21-implementation-of-meteor-component-library.md
 adr/2023-02-02-flow-storer-with-scalar-values.md
@@ -19056,6 +19067,7 @@ adr/2021-07-22-move-storefront-scripts-to-head.md
 adr/2023-07-13-flow-builder-preview.md
 adr/2022-02-09-controller-configuration-route-defaults.md
 adr/2022-03-15-extract-data-handling-classes-to-extension-sdk.md
+adr/2026-03-17-refactor-of-document-generation.md
 adr/2021-05-14-when-to-use-plain-sql-or-dal.md
 adr/2023-06-27-store-api-to-app-server.md
 adr/2021-11-23-add-possibility-for-plugin-to-add-a-html-file.md
@@ -20444,7 +20456,6 @@ tests/integration/Core/Framework/Api/Acl/AclCriteriaValidatorTest.php
 tests/integration/Core/Framework/Api/Acl/AclAnnotationValidatorTest.php
 tests/integration/Core/Framework/Api/ApiAwareTest.php
 tests/integration/Core/Framework/Api/fixtures/api-aware-fields.json
-tests/integration/Core/Framework/Api/ApiAliasTest.php
 tests/integration/Core/Framework/Api/ResponseTypeRegistryTest.php
 tests/integration/Core/Framework/Api/OAuth/ClientRepositoryTest.php
 tests/integration/Core/Framework/Api/ApiDefinition/Generator/OpenApi3Test.php
@@ -20726,6 +20737,8 @@ tests/migration/Core/V6_7/Migration1752219159AddLanguageActiveTest.php
 tests/migration/Core/V6_7/Migration1773824493AddProviderColumnToProductExportTest.php
 tests/migration/Core/V6_7/Migration1740321707SetAutoplayTimeoutAndSpeedSettingsForProductSliderTest.php
 tests/migration/Core/V6_7/Migration1697112044PaymentAndShippingTechnicalNameRequiredTest.php
+tests/migration/Core/V6_7/Migration1774366000MigrateLineItemStockRuleConditionTest.php
+tests/migration/Core/V6_7/Migration1773420826AddSalutationPositionColumnTest.php
 tests/migration/Core/V6_7/Migration1742484083TransitionToAddressInputFieldArrangementTest.php
 tests/migration/Core/V6_7/Migration1752750086AddIndexToOrderLineItemCreateAndUpdateTest.php
 tests/migration/Core/V6_7/Migration1754398573ChangeAllLineItemsRuleValueTypeTest.php
@@ -21005,6 +21018,7 @@ tests/examples/GetSitemapFileExample.php
 tests/devops/Core/Test/DataAbstractionLayerValidateCommandTest.php
 tests/devops/Core/Test/AnnotationTagTest.php
 tests/devops/Core/DefaultsTest.php
+tests/devops/Core/Framework/Api/ApiAliasTest.php
 tests/devops/Core/Framework/ServiceDefinitionTest.php
 tests/devops/Core/DevOps/ADRValidationTest.php
 tests/devops/Core/DevOps/StaticAnalyse/PHPStan/Rules/data/PublicServiceDecoratorRule/services.xml

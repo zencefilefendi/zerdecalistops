@@ -236,7 +236,6 @@ packages/types/src/comments.ts
 packages/types/src/index.ts
 packages/types/src/users.ts
 packages/types/src/schema.ts
-packages/types/src/server.ts
 packages/types/src/flows.ts
 packages/types/src/misc.ts
 packages/types/src/storage.ts
@@ -816,6 +815,7 @@ packages/schema/src/dialects/mssql.ts
 packages/schema/src/dialects/postgres.ts
 packages/schema/src/dialects/cockroachdb.ts
 packages/schema/src/dialects/mysql.ts
+packages/schema/src/dialects/mssql.test.ts
 packages/composables/vitest.config.ts
 packages/composables/license
 packages/composables/package.json
@@ -1705,7 +1705,6 @@ api/src/utils/get-secret.ts
 api/src/utils/get-column-path.ts
 api/src/utils/is-directus-jwt.test.ts
 api/src/utils/get-module-default.ts
-api/src/utils/is-unauthenticated.test.ts
 api/src/utils/get-field-relational-depth.test.ts
 api/src/utils/compress.ts
 api/src/utils/get-config-from-env.test.ts
@@ -1733,7 +1732,6 @@ api/src/utils/get-snapshot-diff.ts
 api/src/utils/get-default-value.ts
 api/src/utils/get-snapshot-diff.test.ts
 api/src/utils/is-url-allowed.ts
-api/src/utils/is-unauthenticated.ts
 api/src/utils/generate-hash.ts
 api/src/utils/reduce-schema.ts
 api/src/rate-limiter.ts
@@ -1746,10 +1744,13 @@ api/src/test-utils/knex.ts
 api/src/test-utils/emitter.ts
 api/src/test-utils/env.ts
 api/src/test-utils/services/items-service.ts
+api/src/test-utils/services/activity-service.ts
 api/src/test-utils/services/fields-service.ts
+api/src/test-utils/services/revisions-service.ts
 api/src/test-utils/services/folders-service.ts
 api/src/test-utils/services/files-service.ts
 api/src/test-utils/controllers.ts
+api/src/flows.test.ts
 api/src/logger/index.ts
 api/src/logger/logs-stream.test.ts
 api/src/logger/logs-stream.ts
@@ -1876,6 +1877,7 @@ api/src/services/fields/build-collection-and-field-relations.test.ts
 api/src/services/fields/get-collection-meta-updates.ts
 api/src/services/deployment.ts
 api/src/services/assets.test.ts
+api/src/services/versions.test.ts
 api/src/services/assets.ts
 api/src/services/websocket.ts
 api/src/services/mail/rate-limiter.test.ts
@@ -1994,21 +1996,14 @@ Dockerfile
 cla.md
 pnpm-workspace.yaml
 pnpm-lock.yaml
-.changeset/polite-colts-glow.md
-.changeset/many-facts-film.md
-.changeset/ready-ghosts-call.md
-.changeset/two-symbols-post.md
-.changeset/social-rings-invent.md
-.changeset/curvy-tigers-exist.md
-.changeset/shaggy-news-check.md
+.changeset/small-pens-grow.md
 .changeset/config.json
-.changeset/funny-jobs-drop.md
-.changeset/strong-dolls-rescue.md
-.changeset/goofy-eels-smile.md
-.changeset/tiny-humans-sit.md
-.changeset/old-chairs-end.md
-.changeset/moody-papers-help.md
-.changeset/three-emus-admire.md
+.changeset/asset-cache-revalidate.md
+.changeset/fix-sdk-policy-user-access-types.md
+.changeset/plain-mice-arrive.md
+.changeset/respect-collection-accountability-version-save.md
+.changeset/seven-parrots-decide.md
+.changeset/cute-rivers-mate.md
 AGENTS.md
 security.md
 .vscode/extensions.json
@@ -2048,6 +2043,7 @@ tests/blackbox/tests/common/auth/login.test.ts
 tests/blackbox/tests/common/auth/ldap.test.ts
 tests/blackbox/tests/common/auth/oauth-multi-domain.test.ts
 tests/blackbox/tests/common/assets/limit.test.ts
+tests/blackbox/tests/common/assets/cache-revalidate.test.ts
 tests/blackbox/tests/common/assets/read.test.ts
 tests/blackbox/tests/common/assets/format.test.ts
 tests/blackbox/tests/common/assets/concurrency.test.ts
@@ -2153,6 +2149,7 @@ tests/blackbox/setup/seeds/03_tests_extensions.js
 tests/blackbox/setup/seeds/01_delete_existing_data.js
 eslint.config.js
 contributing.md
+ai_policy.md
 crowdin.yml
 codecov.yaml
 sdk/license
@@ -3170,6 +3167,7 @@ app/src/modules/settings/routes/flows/components/arrows/utils/get-points.ts
 app/src/modules/settings/routes/flows/components/arrows/utils/is-point-in-panel.test.ts
 app/src/modules/settings/routes/flows/components/arrows/utils/range.ts
 app/src/modules/settings/routes/flows/components/arrows/types.ts
+app/src/modules/settings/routes/flows/triggers.test.ts
 app/src/modules/settings/routes/flows/constants.ts
 app/src/modules/settings/routes/flows/overview.vue
 app/src/modules/settings/routes/flows/triggers.ts
@@ -3440,6 +3438,7 @@ app/src/interfaces/_system/system-field/index.ts
 app/src/interfaces/_system/system-field/system-field.vue
 app/src/interfaces/_system/system-token/index.ts
 app/src/interfaces/_system/system-token/system-token.vue
+app/src/interfaces/_system/system-token/system-token.test.ts
 app/src/interfaces/_system/system-folder/index.ts
 app/src/interfaces/_system/system-folder/FolderListItem.vue
 app/src/interfaces/_system/system-folder/folder.vue
