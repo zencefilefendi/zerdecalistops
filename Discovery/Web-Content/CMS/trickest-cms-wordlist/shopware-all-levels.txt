@@ -84127,6 +84127,12 @@ Test/Stub/App/StaticSourceResolver.php
 Stub/App/StaticSourceResolver.php
 App/StaticSourceResolver.php
 StaticSourceResolver.php
+src/Core/Test/Stub/Installer/InstallerKernelStub.php
+Core/Test/Stub/Installer/InstallerKernelStub.php
+Test/Stub/Installer/InstallerKernelStub.php
+Stub/Installer/InstallerKernelStub.php
+Installer/InstallerKernelStub.php
+InstallerKernelStub.php
 src/Core/Test/Stub/Symfony/StubKernel.php
 Core/Test/Stub/Symfony/StubKernel.php
 Test/Stub/Symfony/StubKernel.php
@@ -138339,6 +138345,11 @@ devops/Core/Test/AnnotationTagTest.php
 Core/Test/AnnotationTagTest.php
 Test/AnnotationTagTest.php
 AnnotationTagTest.php
+tests/devops/Core/Installer/InstallerKernelTest.php
+devops/Core/Installer/InstallerKernelTest.php
+Core/Installer/InstallerKernelTest.php
+Installer/InstallerKernelTest.php
+InstallerKernelTest.php
 tests/devops/Core/DefaultsTest.php
 devops/Core/DefaultsTest.php
 Core/DefaultsTest.php
