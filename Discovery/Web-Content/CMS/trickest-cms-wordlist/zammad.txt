@@ -90,6 +90,7 @@ spec/lib/whatsapp/webhook/message/status/delivered_spec.rb
 spec/lib/stats/ticket_waiting_time_spec.rb
 spec/lib/background_services_spec.rb
 spec/lib/active_model/errors_spec.rb
+spec/lib/rack/middleware/secure_context_spec.rb
 spec/lib/ai/provider/anthropic_spec.rb
 spec/lib/ai/provider/mistral_spec.rb
 spec/lib/ai/provider/open_ai_spec.rb
@@ -2021,6 +2022,7 @@ spec/rubocop/cop/zammad/forbid_def_send_spec.rb
 spec/rubocop/cop/zammad/graphql_authorized_requires_enabled_setting_spec.rb
 spec/rubocop/cop/zammad/graphql_authorize_requires_permission_spec.rb
 spec/rubocop/cop/zammad/forbid_default_scope_spec.rb
+spec/rubocop/cop/zammad/forbid_calling_service_directly_spec.rb
 spec/controllers/can_paginate/pagination_spec.rb
 spec/controllers/application_controller/has_download/download_file_spec.rb
 spec/controllers/integration/exchange_spec.rb
@@ -2606,6 +2608,7 @@ lib/password_hash.rb
 lib/telegram_helper.rb
 lib/db_helper.rb
 lib/websocket_server.rb
+lib/rack/middleware/secure_context.rb
 lib/ai/provider/concerns/has_models_without_temperature_fallback.rb
 lib/ai/provider/concerns/has_configurable_model.rb
 lib/ai/provider/concerns/handles_response.rb
@@ -2697,7 +2700,6 @@ lib/core_ext/string.rb
 lib/core_ext/net/smtp.rb
 lib/core_ext/net/ldap/entry.rb
 lib/core_ext/email_address/lib/email_address/local.rb
-lib/core_ext/rack/utils.rb
 lib/core_ext/rack/session/abstract/id.rb
 lib/core_ext/object.rb
 lib/core_ext/kernel.rb
@@ -2712,7 +2714,6 @@ lib/core_ext/mail/encodings/8bit.rb
 lib/core_ext/active_record/calculations/pluck_as_hash.rb
 lib/core_ext/active_record/connection_adapters/postgresql/schema_statements.rb
 lib/core_ext/active_record/store/indifferent_coder.rb
-lib/core_ext/action_dispatch/middleware/cookies.rb
 lib/core_ext/em-websocket/framing07.rb
 lib/core_ext/em-websocket/masking04.rb
 lib/core_ext/class.rb
@@ -3910,6 +3911,7 @@ config/initializers/application_controller_renderer.rb
 config/initializers/cookies_serializer.rb
 config/initializers/db_preflight_check.rb
 config/initializers/active_record_lock_issue_3664.rb
+config/initializers/add_secure_context.rb
 config/initializers/delayed_jobs_verify_db_connection.rb
 config/initializers/db_preferences.rb
 config/initializers/delayed_jobs_timeout_per_job.rb
@@ -4178,6 +4180,7 @@ package.json
 .gitlab/ci/test.yml
 .gitlab/ci/lint.yml
 .gitlab/ci/pre.yml
+.gitlab/ci/automate.yml
 .gitlab/ci/__includes__/job_rules.yml
 .gitlab/ci/__includes__/stages.yml
 .gitlab/ci/__includes__/low_concurrency_jobs.yml
@@ -4422,6 +4425,7 @@ db/migrate/20210816125040_rename_notification_sender.rb
 db/migrate/20250714101518_update_ai_permissions.rb
 db/migrate/20210922090000_issue_3759_cache_clear.rb
 db/migrate/20251113140000_add_bearer_token_and_http_method_to_webhooks.rb
+db/migrate/20260422120000_add_meta_to_online_notifications.rb
 db/migrate/20250717122734_ticket_summary_generation.rb
 db/migrate/20161101131409_create_doorkeeper_tables.rb
 db/migrate/20230328093547_webhooks_basic_auth.rb
@@ -4801,9 +4805,11 @@ tmp/README.md
 .dev/rubocop/cop/zammad/no_to_sym_on_string.rb
 .dev/rubocop/cop/zammad/prefer_models_all.rb
 .dev/rubocop/cop/zammad/timezone_default.rb
+.dev/rubocop/cop/zammad/forbid_calling_service_directly.rb
 .dev/rubocop/cop/zammad/enforce_in_modal.rb
 .dev/rubocop/cop/zammad/forbid_rand.rb
 .dev/rubocop/rubocop_zammad.rb
+.dev/updatecli-values-enable-gitlab.yaml
 pnpm-lock.yaml
 public/422-mobile.html
 public/404-mobile.html
@@ -5233,6 +5239,7 @@ vendor/assets/javascripts/.gitkeep
 doc/developer_manual/index.md
 doc/developer_manual/standards/how-to-handle-localization.md
 doc/developer_manual/standards/how-to-design-tests.md
+doc/developer_manual/standards/how-to-design-services.md
 doc/developer_manual/standards/how-to-rebuild-the-chat.md
 doc/developer_manual/standards/how-to-authorize-graphql.md
 doc/developer_manual/standards/how-to-use-forms.md
@@ -5839,6 +5846,7 @@ app/models/application_model/can_assets.rb
 app/models/application_model/can_associations.rb
 app/models/application_model/has_attachments.rb
 app/models/application_model/has_recent_views.rb
+app/models/application_model/can_destroy_dependent_associations.rb
 app/models/application_model/has_cache.rb
 app/models/application_model/can_cleanup_param.rb
 app/models/application_model/can_query_case_insensitive_where_or_sql.rb
@@ -7658,6 +7666,7 @@ app/frontend/apps/desktop/components/CommonFlyout/CommonFlyout.vue
 app/frontend/apps/desktop/components/CommonFlyout/useFlyout.ts
 app/frontend/apps/desktop/components/CommonFlyout/types.ts
 app/frontend/apps/desktop/components/CommonFlyout/CommonFlyoutActionFooter.vue
+app/frontend/apps/desktop/components/AiAgent/AiAgentAvatar.vue
 app/frontend/apps/desktop/components/AiAgent/__tests__/AiAgentPopoverWithTrigger.spec.ts
 app/frontend/apps/desktop/components/AiAgent/AiAgentPopoverWithTrigger.vue
 app/frontend/apps/desktop/components/SplitButton/SplitButton.vue
@@ -8940,6 +8949,7 @@ app/frontend/apps/desktop/pages/ticket/types/sidebar.ts
 app/frontend/apps/desktop/pages/ticket/routes.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/support/ticket-edit-helpers.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/support/ticket-create-helpers.ts
+app/frontend/apps/desktop/pages/ticket/__tests__/ticket-create/ticket-create-hint-note.spec.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-create/ticket-create-apply-split-ticket-article.spec.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-create/ticket-create-user.spec.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-create/ticket-create-github.spec.ts
@@ -8959,6 +8969,7 @@ app/frontend/apps/desktop/pages/ticket/__tests__/ticket-detail-view/ticket-detai
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-detail-view/ticket-detail-view-subscribers.spec.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-detail-view/ticket-detail-view-page-errors.spec.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-detail-view/ticket-detail-view-checklists.spec.ts
+app/frontend/apps/desktop/pages/ticket/__tests__/ticket-detail-view/ticket-detail-view-hint-note.spec.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-detail-view/ticket-detail-view.spec.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-detail-view/ticket-detail-view-navigation-tabs-switching.spec.ts
 app/frontend/apps/desktop/pages/ticket/__tests__/ticket-detail-view/ticket-detail-view-ticket-summary.spec.ts
@@ -9591,10 +9602,12 @@ app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/TicketAction/T
 app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/ArticleReactionBadge.vue
 app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/TicketViewerItem.vue
 app/frontend/apps/mobile/pages/ticket/routes.ts
+app/frontend/apps/mobile/pages/ticket/__tests__/ticket-create-hint-note.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/ticket-information-organization.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/ticket-information-update.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/ticket-information-user.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/tickets-view.spec.ts
+app/frontend/apps/mobile/pages/ticket/__tests__/ticket-detail-view-hint-note.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/ticket-detail-view.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/ticket-article-context.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/ticket-create.spec.ts
@@ -11070,6 +11083,7 @@ app/graphql/gql/types/ai/text_tool_type.rb
 app/graphql/gql/types/form_updater_result_type.rb
 app/graphql/gql/types/ticket_external_references_type.rb
 app/graphql/gql/types/base_argument.rb
+app/graphql/gql/types/online_notification/meta_type.rb
 app/graphql/gql/types/base_connection.rb
 app/graphql/gql/types/user_device_type.rb
 app/graphql/gql/types/base_input_object.rb
@@ -11530,7 +11544,6 @@ app/services/service/auth/send_admin_token.rb
 app/services/service/auth/deprecated/send_admin_token.rb
 app/services/service/auth/verify_admin_token.rb
 app/services/service/beta_ui/send_feedback.rb
-app/services/service/base_with_current_user.rb
 app/services/service/system/set_email_notification_configuration.rb
 app/services/service/system/check_setup.rb
 app/services/service/system/run_auto_wizard.rb
