@@ -1,4 +1,5 @@
 LICENSE-ICONS-3RD-PARTY.json
+.claude/commands/work-on-issue.md
 .claude/settings.json
 .claude/hooks/lint-after-edit.sh
 .claude/hooks/regenerate-after-edit.sh
@@ -47,6 +48,7 @@ LICENSE-ICONS-3RD-PARTY.json
 .dev/hygen/.hygen.js
 .dev/hygen/pnpm-lock.yaml
 .dev/coffeelint/rules/detect_translatable_string.coffee
+.dev/agent_docs/development_workflow.md
 .dev/agent_docs/frontend_patterns.md
 .dev/agent_docs/database_migrations.md
 .dev/agent_docs/graphql_patterns.md
@@ -70,6 +72,7 @@ LICENSE-ICONS-3RD-PARTY.json
 .dev/cypress/pnpm-lock.yaml
 .dev/cypress/utils.ts
 .dev/updatecli-values-enable-gitlab.yaml
+.dev/agents/code-reviewer.md
 .dev/rubocop/validate_todos.rb
 .dev/rubocop/cop/zammad/forbid_default_scope.rb
 .dev/rubocop/cop/zammad/faker_unique.rb
@@ -346,6 +349,7 @@ db/migrate/20200401000001_service_now_config.rb
 db/migrate/20241104151855_issue5390_taskbar_remove_duplicated_key_by_user.rb
 db/migrate/20210106100013_issue_3346_xoauth2_token_not_fetched.rb
 db/migrate/20180919000000_setting_update_pretty_date_format.rb
+db/migrate/20260428121123_issue_6056_no_proxy.rb
 db/migrate/20171024000001_monit_integration.rb
 db/migrate/20180716060129_issue_2019_fix_double_domain_links_in_trigger_emails.rb
 db/migrate/20250820082156_ai_text_tool_fix_spell_and_grammar.rb
@@ -1559,6 +1563,7 @@ app/models/ai/stored_result.rb
 app/models/ai/text_tool.rb
 app/models/ai/agent/type.rb
 app/models/ai/agent/assets.rb
+app/models/ai/agent/type/ticket_tagger.rb
 app/models/ai/agent/type/ticket_prioritizer.rb
 app/models/ai/agent/type/ticket_categorizer.rb
 app/models/ai/agent/type/concerns/has_object_attribute_list.rb
@@ -1567,6 +1572,7 @@ app/models/ai/agent/type/ticket_group_dispatcher.rb
 app/models/ai/agent/type/ticket_title_rewriter.rb
 app/models/ai/agent/type/ticket_text_extractor.rb
 app/models/user_device/triggers_subscriptions.rb
+app/models/user_device/notification_presenter.rb
 app/models/avatar.rb
 app/models/postmaster_filter.rb
 app/models/cti/log.rb
@@ -8580,6 +8586,7 @@ lib/sessions/client.rb
 lib/sessions/node.rb
 lib/sessions/store/redis.rb
 lib/sessions/store/file.rb
+lib/user_agent/http_client.rb
 lib/fill_db.rb
 lib/app_version.rb
 lib/session_helper/collection_ticket.rb
@@ -8601,6 +8608,7 @@ lib/service/image.rb
 lib/service/geo_ip.rb
 lib/service/system_assets.rb
 lib/service/geo_ip/zammad.rb
+lib/erb_sanitizer.rb
 lib/assets_set/proxy.rb
 lib/whatsapp/retry/media.rb
 lib/whatsapp/outgoing/message.rb
@@ -10149,6 +10157,7 @@ spec/models/ai/agent_spec.rb
 spec/models/ai/agent/type_spec.rb
 spec/models/ai/agent/type/ticket_text_extractor_spec.rb
 spec/models/ai/agent/type/ticket_group_dispatcher_spec.rb
+spec/models/ai/agent/type/ticket_tagger_spec.rb
 spec/models/ai/agent/type/ticket_categorizer_spec.rb
 spec/models/chat_spec.rb
 spec/models/text_module_spec.rb
@@ -10837,6 +10846,7 @@ spec/db/migrate/add_history_source_spec.rb
 spec/db/migrate/issue_4848_fix_overview_bulk_screen_spec.rb
 spec/db/migrate/issue3829_broken_avatars_spec.rb
 spec/db/migrate/issue_2368_add_indices_to_histories_and_tickets_spec.rb
+spec/db/migrate/issue_6056_no_proxy_spec.rb
 spec/db/migrate/issue_4316_template_options_migration_spec.rb
 spec/db/migrate/ldap_source_config_spec.rb
 spec/db/migrate/issue_4412_setting_saml_logout_url_spec.rb
@@ -11279,6 +11289,7 @@ spec/lib/validations/out_of_office_validator_spec.rb
 spec/lib/validations/link_uniqueness_validator_spec.rb
 spec/lib/validations/data_privacy_task_validator_spec.rb
 spec/lib/escalation_spec.rb
+spec/lib/erb_sanitizer_spec.rb
 spec/lib/application_handle_info_spec.rb
 spec/lib/search_index_backend/version_handling_spec.rb
 spec/lib/excel_sheet/ticket_spec.rb
@@ -11293,6 +11304,7 @@ spec/lib/ai/provider/anthropic_spec.rb
 spec/lib/ai/provider/zammad_ai_spec.rb
 spec/lib/ai/provider/open_ai_spec.rb
 spec/lib/ai/provider/mistral_spec.rb
+spec/lib/ai/provider/concerns/handles_open_ai_messages_spec.rb
 spec/lib/ai/provider/azure_spec.rb
 spec/lib/ai/provider/shared_examples/model_supports_temperature.rb
 spec/lib/ai/provider/shared_examples/check_temperature_support.rb
@@ -11335,6 +11347,7 @@ spec/lib/sessions/event/chat_agent_state_spec.rb
 spec/lib/sessions/event/chat_transfer_spec.rb
 spec/lib/sessions/event/chat_session_start_spec.rb
 spec/lib/background_services_spec.rb
+spec/lib/user_agent/http_client_spec.rb
 spec/lib/mail/encodings_spec.rb
 spec/lib/user_context_spec.rb
 spec/lib/service/geo_calendar_spec.rb

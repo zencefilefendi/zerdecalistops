@@ -2065,6 +2065,7 @@ src/Core/Migration/V6_7/Migration1697112044PaymentAndShippingTechnicalNameRequir
 src/Core/Migration/V6_7/Migration1742199549MeasurementSystemTable.php
 src/Core/Migration/V6_7/Migration1763377570CreatePasswordChangeMailTemplate.php
 src/Core/Migration/V6_7/Migration1765205483AddTrackOffcanvasCartToAnalytics.php
+src/Core/Migration/V6_7/Migration1777362745MigrateAgenticCommercePluginConfig.php
 src/Core/Migration/V6_7/Migration1743151679AddContextGatewayUrl.php
 src/Core/Migration/V6_7/Migration1773420826AddSalutationPositionColumn.php
 src/Core/Migration/V6_7/Migration1720603803RemoveDefaultPaymentMethodRule.php
@@ -8026,11 +8027,13 @@ src/Core/System/Locale/LocaleException.php
 src/Core/System/Locale/Exception/InvalidLocaleCodeException.php
 src/Core/System/Locale/LocaleEvents.php
 src/Core/System/Locale/Util/LocaleHelper.php
+src/Core/System/Locale/Util/BackwardCompatibleNumberFormatter.php
 src/Core/System/Locale/Aggregate/LocaleTranslation/LocaleTranslationDefinition.php
 src/Core/System/Locale/Aggregate/LocaleTranslation/LocaleTranslationEntity.php
 src/Core/System/Locale/Aggregate/LocaleTranslation/LocaleTranslationCollection.php
 src/Core/System/Locale/LocaleCollection.php
 src/Core/System/Locale/Subscriber/LocaleValidator.php
+src/Core/System/Locale/SystemCheck/LocalesReadinessCheck.php
 src/Core/System/Locale/LocaleEntity.php
 src/Core/System/Language/Rule/LanguageRule.php
 src/Core/System/Language/CachedLanguageLoader.php
@@ -19228,7 +19231,6 @@ tests/acceptance/tests/Settings/CustomerGroupRegistration.spec.ts
 tests/acceptance/tests/Settings/FlowBuilderTemplates.spec.ts
 tests/acceptance/tests/Settings/ShopwareServices.spec.ts
 tests/acceptance/tests/Settings/GoogleAnalyticsAcceptTracking.spec.ts
-tests/acceptance/tests/Settings/MerchantSetDataSharingConsent.spec.ts
 tests/acceptance/tests/Settings/CurrencyRoundingByCountry.spec.ts
 tests/acceptance/tests/Settings/GoogleAnalyticsDeclineTracking.spec.ts
 tests/acceptance/tests/Settings/BasicConsentBannerAvailability.spec.ts
@@ -19491,6 +19493,7 @@ tests/migration/Core/V6_7/Migration1748326970UpdateMailTemplatesForAccessibility
 tests/migration/Core/V6_7/Migration1697112043TemporaryPaymentAndShippingTechnicalNamesTest.php
 tests/migration/Core/V6_7/Migration1726135997CreateMessengerStatsTableTest.php
 tests/migration/Core/V6_7/Migration1770621743CopyUsageDataConsentStateTest.php
+tests/migration/Core/V6_7/Migration1777362745MigrateAgenticCommercePluginConfigTest.php
 tests/migration/Core/V6_7/Migration1764064757SetSearchableForExistingCustomFieldsInProductSearchTest.php
 tests/migration/Core/V6_7/Migration1720610755RemoveDefaultPaymentMethodFromCustomerTest.php
 tests/migration/Core/V6_7/Migration1773928850AddSalesChannelTrackingTablesTest.php
@@ -23416,8 +23419,10 @@ tests/unit/Core/System/DependencyInjection/CompilerPass/SalesChannelEntityCompil
 tests/unit/Core/System/DependencyInjection/CompilerPass/NumberRangeIncrementerCompilerPassTest.php
 tests/unit/Core/System/Locale/LocaleExceptionTest.php
 tests/unit/Core/System/Locale/Util/LocaleHelperTest.php
+tests/unit/Core/System/Locale/Util/BackwardCompatibleNumberFormatterTest.php
 tests/unit/Core/System/Locale/LanguageLocaleCodeProviderTest.php
 tests/unit/Core/System/Locale/Subscriber/LocaleValidatorTest.php
+tests/unit/Core/System/Locale/SystemCheck/LocalesReadinessCheckTest.php
 tests/unit/Core/System/Language/Rule/LanguageRuleTest.php
 tests/unit/Core/System/Language/SalesChannelLanguageLoaderTest.php
 tests/unit/Core/System/Language/LanguageLoaderTest.php
