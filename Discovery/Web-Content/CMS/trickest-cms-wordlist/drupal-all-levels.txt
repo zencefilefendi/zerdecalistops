@@ -59024,6 +59024,11 @@ modules/node/src/NodeTypeListBuilder.php
 node/src/NodeTypeListBuilder.php
 src/NodeTypeListBuilder.php
 NodeTypeListBuilder.php
+core/modules/node/src/NodeAccessRebuild.php
+modules/node/src/NodeAccessRebuild.php
+node/src/NodeAccessRebuild.php
+src/NodeAccessRebuild.php
+NodeAccessRebuild.php
 core/modules/node/src/ConfigTranslation/NodeTypeMapper.php
 modules/node/src/ConfigTranslation/NodeTypeMapper.php
 node/src/ConfigTranslation/NodeTypeMapper.php
