@@ -224,18 +224,26 @@ resources/views/blade/form/legend-help.blade.php
 resources/views/blade/form/tooltip.blade.php
 resources/views/blade/form/row.blade.php
 resources/views/blade/form/legend.blade.php
+resources/views/blade/form/static.blade.php
 resources/views/blade/form/index.blade.php
 resources/views/blade/data-row.blade.php
 resources/views/blade/input/textarea.blade.php
 resources/views/blade/input/username-select.blade.php
 resources/views/blade/input/date-display-format.blade.php
 resources/views/blade/input/select.blade.php
+resources/views/blade/input/minimum-quantity.blade.php
+resources/views/blade/input/company-select.blade.php
+resources/views/blade/input/purchase-cost.blade.php
 resources/views/blade/input/button.blade.php
 resources/views/blade/input/text.blade.php
 resources/views/blade/input/country-select.blade.php
 resources/views/blade/input/locale-select.blade.php
+resources/views/blade/input/manufacturer-select.blade.php
+resources/views/blade/input/supplier-select.blade.php
 resources/views/blade/input/email-format-select.blade.php
 resources/views/blade/input/datepicker.blade.php
+resources/views/blade/input/category-select.blade.php
+resources/views/blade/input/quantity.blade.php
 resources/views/blade/input/colorpicker.blade.php
 resources/views/blade/input/time-display-format.blade.php
 resources/views/blade/input/location-select.blade.php
@@ -299,6 +307,7 @@ resources/views/notifications/markdown/report-expiring-licenses.blade.php
 resources/views/notifications/markdown/asset-reminder.blade.php
 resources/views/notifications/markdown/expected-checkin.blade.php
 resources/views/notifications/markdown/upcoming-audits.blade.php
+resources/views/notifications/markdown/report-bulk-delete.blade.php
 resources/views/notifications/markdown/asset-acceptance.blade.php
 resources/views/notifications/markdown/report-low-inventory.blade.php
 resources/views/notifications/markdown/asset-requested.blade.php
@@ -6786,6 +6795,7 @@ app/Mail/SendUpcomingAuditMail.php
 app/Mail/CheckinLicenseMail.php
 app/Mail/CheckinAccessoryMail.php
 app/Mail/CheckoutConsumableMail.php
+app/Mail/BulkDeleteReportMail.php
 app/Mail/CheckinComponentMail.php
 app/Mail/CheckoutComponentMail.php
 app/Mail/ExpiringAssetsMail.php
@@ -7115,6 +7125,7 @@ app/Console/Commands/RotateAppKey.php
 app/Console/Commands/SendInventoryAlerts.php
 app/Console/Commands/MoveUploadsToNewDisk.php
 app/Console/Commands/PurgeEulaPDFs.php
+app/Console/Commands/BulkDelete.php
 app/Console/Commands/SystemBackup.php
 app/Console/Commands/ResetDemoSettings.php
 app/Console/Commands/DisableSAML.php
@@ -7413,6 +7424,7 @@ tests/Feature/Groups/Ui/IndexGroupTest.php
 tests/Feature/Groups/Ui/UpdateGroupTest.php
 tests/Feature/Groups/Ui/ShowGroupTest.php
 tests/Feature/Groups/Ui/CreateGroupTest.php
+tests/Feature/Checkins/Api/AssetCheckinByTagTest.php
 tests/Feature/Checkins/Api/LicenseCheckInTest.php
 tests/Feature/Checkins/Api/AssetCheckinTest.php
 tests/Feature/Checkins/Api/ComponentCheckinTest.php
@@ -7432,6 +7444,7 @@ tests/Feature/Categories/Ui/UpdateCategoriesTest.php
 tests/Feature/Categories/Ui/BulkDeleteCategoriesTest.php
 tests/Feature/Categories/Ui/ShowCategoryTest.php
 tests/Feature/Categories/Ui/DeleteCategoriesTest.php
+tests/Feature/Users/UserPermissionLoggingTest.php
 tests/Feature/Users/UserCompanyLoggingTest.php
 tests/Feature/Users/Api/CreateUserTest.php
 tests/Feature/Users/Api/RestoreUserTest.php
@@ -7634,6 +7647,7 @@ tests/Feature/Notifications/Email/EmailNotificationsToAdminAlertEmailUponCheckin
 tests/Feature/Notifications/Email/AcceptanceReminderTest.php
 tests/Feature/History/Api/IndexHistoryTest.php
 tests/Feature/CustomFieldsets/Api/DeleteCustomFieldsetsTest.php
+tests/Feature/Console/BulkDeleteTest.php
 tests/Feature/Console/CheckinAndDeleteItemsTest.php
 tests/Feature/Console/SendAcceptanceReminderTest.php
 tests/Feature/Console/FixupAssignedToAssignedTypeTest.php
@@ -7658,6 +7672,7 @@ tests/Feature/Locations/Ui/IndexLocationsTest.php
 tests/Feature/Locations/Ui/ShowLocationTest.php
 tests/Feature/Reporting/ActivityReportTest.php
 tests/Feature/Reporting/CustomReportTest.php
+tests/Feature/Reporting/AccessoryReportTest.php
 tests/Feature/Reporting/UnacceptedAssetReportTest.php
 tests/Feature/Maintenances/Api/CreateMaintenanceTest.php
 tests/Feature/Maintenances/Api/MaintenanceNotesTest.php

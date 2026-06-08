@@ -611,7 +611,6 @@ PWD
 Present
 Proxy.ashx
 README.txt
-REST/auth/CSRFTicket
 ReportBug
 SAGE
 SNP
@@ -702,7 +701,6 @@ _borders
 _derived
 _email.html
 _fpclass
-_generated
 _global_notifications
 _jsn.json
 _jsnp.js
@@ -726,7 +724,6 @@ _nitf.xml
 _overlay
 _print.html
 _private
-_private/admin-tools
 _prq
 _qa.html
 _query=
@@ -979,8 +976,6 @@ backstage/bbc-login-help
 backstage/bbc-login-help$
 badges/profile/create
 bandito
-bePatron
-bePatronDone
 best-countries-for-business/list
 beta
 bfe/apps/website
@@ -1047,8 +1042,8 @@ books?*zoom=5
 boutique/sitemaps
 bricks/image
 business
-business/*&categories=
-business/*?categories=
+business/*&categories
+business/*?categories
 business/blahblah
 business/learning/blog
 business/pos-system/shop
@@ -1079,7 +1074,6 @@ celebritycruises/guide-to-the-globe
 cgi-bin
 cgibin
 chat
-checkout
 checkout-external
 checkoutnow
 checkpoint
@@ -1143,7 +1137,6 @@ contact_importer
 contactus
 contactus/mwaas*
 content-guest/rss/channels
-control
 cookie-policy
 copilot
 copilot/c
@@ -1160,7 +1153,6 @@ core/*.js$
 core/*.js?
 core/*.png
 core/*.svg
-corgi$
 couchmode
 coupons/visit
 covid19/mobility
@@ -1697,9 +1689,10 @@ hp/video
 hpc/*/supported-applications.aspx?
 hpm
 hpmob
-http://instagram.com/robots.txt
-http://support.cloudflare.com/robots.txt
-http://web.archive.org/robots.txt
+http://ajax.googleapis.com/robots.txt
+http://amazon.com/robots.txt
+http://api.whatsapp.com/robots.txt
+http://slideshare.net/robots.txt
 hub?category=
 hz/contact-us/ajax/initiate-trusted-contact
 hz/help/contact/*/message/$
@@ -2036,7 +2029,6 @@ musicl
 musics
 musicstore/download
 musicstore/preview
-mwebWindowDone
 mwlite
 my_account
 my_favorites
@@ -2121,7 +2113,6 @@ patents/download
 patents/pdf
 patents/related
 patents?
-patronNext
 pay
 pay/images/merchant_logos
 pay/images/program_logos
@@ -2210,7 +2201,6 @@ pro
 proFile/history?
 product-reviews/B0069IY63Y
 product/reviews?
-productPurchaseDone
 product_
 production-monitoring
 products;
@@ -2293,7 +2283,6 @@ referrer=
 registry/wishlist
 remotelogout
 rep=hc
-report
 report-abuse?report=
 report-appeal
 report=
@@ -2369,6 +2358,7 @@ search/user?q=
 search/users
 search/video?
 search?
+search?*cashtagRestId=
 search?*tbm=map
 search?q$
 search?q=
@@ -3003,7 +2993,6 @@ upload
 urchin_test
 url
 user
-user.php
 user/account-recovery
 user/login
 user/logout
@@ -3012,7 +3001,6 @@ user/password
 user/password-reset
 user/register
 user/verify
-userNext
 userinfo
 users
 using
@@ -3283,7 +3271,7 @@ wiki/Wikipedia%3AVandalismi_in_corso
 wiki/Wikipedia%3AVandalismusmeldung
 wiki/Wikipedia%3AVandalismusmeldung%2F
 wiki/Wikipedia%3AVermittlungsausschuss
-wiki/Wikipedia%3AVermittlungsausschuss%2Fhttp://sites.google.com/robots.txt
+wiki/Wikipedia%3AVermittlungsausschuss%2Fhttp://discord.gg/robots.txt
 wiki/Wikipedia%3AVotes_for_deletion
 wiki/Wikipedia%3AWikiProject_Deletion_sorting
 wiki/Wikipedia%3AWikiProject_Spam
@@ -3452,7 +3440,7 @@ wiki/Wikipedia_Diskussion:Checkuser%2F
 wiki/Wikipedia_Diskussion:Spam-Blacklist-Log
 wiki/Wikipedia_talk%3AAbuse_reports
 wiki/Wikipedia_talk%3AAbuse_response
-wiki/Wikipedia_talk%3AAdministrator_electionshttp://policies.google.com/robots.txt
+wiki/Wikipedia_talk%3AAdministrator_electionshttp://facebook.com/robots.txt
 wiki/Wikipedia_talk%3AAdministrator_recall
 wiki/Wikipedia_talk%3AAdministrator_review
 wiki/Wikipedia_talk%3AAdministrators%27_noticeboard
