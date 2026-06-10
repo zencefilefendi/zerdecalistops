@@ -5280,6 +5280,12 @@ Component/Core/Calculator/ProductVariantPricesCalculatorInterface.php
 Core/Calculator/ProductVariantPricesCalculatorInterface.php
 Calculator/ProductVariantPricesCalculatorInterface.php
 ProductVariantPricesCalculatorInterface.php
+src/Sylius/Component/Core/Calculator/CatalogPricesCalculatorInterface.php
+Sylius/Component/Core/Calculator/CatalogPricesCalculatorInterface.php
+Component/Core/Calculator/CatalogPricesCalculatorInterface.php
+Core/Calculator/CatalogPricesCalculatorInterface.php
+Calculator/CatalogPricesCalculatorInterface.php
+CatalogPricesCalculatorInterface.php
 src/Sylius/Component/Core/Taxation/Applicator/OrderShipmentTaxesApplicator.php
 Sylius/Component/Core/Taxation/Applicator/OrderShipmentTaxesApplicator.php
 Component/Core/Taxation/Applicator/OrderShipmentTaxesApplicator.php
