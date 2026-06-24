@@ -168044,6 +168044,15 @@ Unit/Model/Address/DataProviderTest.php
 Model/Address/DataProviderTest.php
 Address/DataProviderTest.php
 DataProviderTest.php
+app/code/Magento/Customer/Test/Unit/Model/Address/ConfigTesting.php
+code/Magento/Customer/Test/Unit/Model/Address/ConfigTesting.php
+Magento/Customer/Test/Unit/Model/Address/ConfigTesting.php
+Customer/Test/Unit/Model/Address/ConfigTesting.php
+Test/Unit/Model/Address/ConfigTesting.php
+Unit/Model/Address/ConfigTesting.php
+Model/Address/ConfigTesting.php
+Address/ConfigTesting.php
+ConfigTesting.php
 app/code/Magento/Customer/Test/Unit/Model/CustomerRegistryTest.php
 code/Magento/Customer/Test/Unit/Model/CustomerRegistryTest.php
 Magento/Customer/Test/Unit/Model/CustomerRegistryTest.php

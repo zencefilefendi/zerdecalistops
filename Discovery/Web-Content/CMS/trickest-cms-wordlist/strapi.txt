@@ -3203,6 +3203,8 @@ packages/core/strapi/src/cli/utils/logger.ts
 packages/core/strapi/src/cli/utils/helpers.ts
 packages/core/strapi/src/cli/utils/telemetry.ts
 packages/core/strapi/src/cli/utils/data-transfer.ts
+packages/core/strapi/src/cli/utils/try-quick-outdir.ts
+packages/core/strapi/src/cli/utils/__tests__/try-quick-outdir.test.ts
 packages/core/strapi/src/cli/utils/__tests__/parse-restore-from-options.test.ts
 packages/core/strapi/src/cli/utils/__tests__/data-transfer-loader.test.ts
 packages/core/strapi/src/cli/utils/__tests__/logger.test.ts
@@ -3575,6 +3577,7 @@ packages/core/core/src/configuration/index.ts
 packages/core/core/src/configuration/urls.ts
 packages/core/core/src/configuration/get-dirs.ts
 packages/core/core/src/configuration/config-loader.ts
+packages/core/core/src/mcp.ts
 packages/core/core/src/middlewares/body.ts
 packages/core/core/src/middlewares/index.ts
 packages/core/core/src/middlewares/cors.ts
@@ -3825,6 +3828,7 @@ packages/core/core/src/services/__tests__/content-api-permissions.test.ts
 packages/core/core/src/services/__tests__/core-store.test.ts
 packages/core/core/src/services/auth/index.ts
 packages/core/core/src/services/webhook-runner.ts
+packages/core/core/src/ai.ts
 packages/core/core/src/modules.d.ts
 packages/core/core/src/container.ts
 packages/core/core/src/migrations/index.ts
@@ -4669,7 +4673,9 @@ packages/plugins/users-permissions/server/utils/sanitize/visitors/remove-user-re
 packages/plugins/users-permissions/server/utils/sanitize/visitors/index.js
 packages/plugins/users-permissions/server/utils/sanitize/index.js
 packages/plugins/users-permissions/server/utils/index.js
+packages/plugins/users-permissions/server/utils/__tests__/refresh-cookie-options.test.js
 packages/plugins/users-permissions/server/utils/__tests__/index.test.js
+packages/plugins/users-permissions/server/utils/refresh-cookie-options.js
 packages/plugins/users-permissions/server/services/user.js
 packages/plugins/users-permissions/server/services/role.js
 packages/plugins/users-permissions/server/services/providers-registry.js
