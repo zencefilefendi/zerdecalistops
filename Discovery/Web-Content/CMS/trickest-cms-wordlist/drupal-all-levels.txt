@@ -31383,6 +31383,12 @@ modules/locale/src/StringStorageInterface.php
 locale/src/StringStorageInterface.php
 src/StringStorageInterface.php
 StringStorageInterface.php
+core/modules/locale/src/Hook/LocaleFormHooks.php
+modules/locale/src/Hook/LocaleFormHooks.php
+locale/src/Hook/LocaleFormHooks.php
+src/Hook/LocaleFormHooks.php
+Hook/LocaleFormHooks.php
+LocaleFormHooks.php
 core/modules/locale/src/Hook/LocaleThemeHooks.php
 modules/locale/src/Hook/LocaleThemeHooks.php
 locale/src/Hook/LocaleThemeHooks.php
@@ -31401,6 +31407,12 @@ locale/src/Hook/LocaleRequirements.php
 src/Hook/LocaleRequirements.php
 Hook/LocaleRequirements.php
 LocaleRequirements.php
+core/modules/locale/src/Hook/LocaleExtensionHooks.php
+modules/locale/src/Hook/LocaleExtensionHooks.php
+locale/src/Hook/LocaleExtensionHooks.php
+src/Hook/LocaleExtensionHooks.php
+Hook/LocaleExtensionHooks.php
+LocaleExtensionHooks.php
 core/modules/locale/src/Hook/LocaleHooks.php
 modules/locale/src/Hook/LocaleHooks.php
 locale/src/Hook/LocaleHooks.php

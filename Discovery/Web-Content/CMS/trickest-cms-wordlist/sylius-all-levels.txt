@@ -61275,6 +61275,14 @@ PayumBundle/tests/Request/ResolveNextRouteTest.php
 tests/Request/ResolveNextRouteTest.php
 Request/ResolveNextRouteTest.php
 ResolveNextRouteTest.php
+src/Sylius/Bundle/PayumBundle/tests/OrderPay/Provider/PayumPayResponseProviderTest.php
+Sylius/Bundle/PayumBundle/tests/OrderPay/Provider/PayumPayResponseProviderTest.php
+Bundle/PayumBundle/tests/OrderPay/Provider/PayumPayResponseProviderTest.php
+PayumBundle/tests/OrderPay/Provider/PayumPayResponseProviderTest.php
+tests/OrderPay/Provider/PayumPayResponseProviderTest.php
+OrderPay/Provider/PayumPayResponseProviderTest.php
+Provider/PayumPayResponseProviderTest.php
+PayumPayResponseProviderTest.php
 src/Sylius/Bundle/PayumBundle/tests/Action/ResolveNextRouteActionTest.php
 Sylius/Bundle/PayumBundle/tests/Action/ResolveNextRouteActionTest.php
 Bundle/PayumBundle/tests/Action/ResolveNextRouteActionTest.php
