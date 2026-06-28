@@ -96390,6 +96390,16 @@ Unit/Backpressure/SlidingWindow/ValkeyRequestLoggerTest.php
 Backpressure/SlidingWindow/ValkeyRequestLoggerTest.php
 SlidingWindow/ValkeyRequestLoggerTest.php
 ValkeyRequestLoggerTest.php
+lib/internal/Magento/Framework/App/Test/Unit/Backpressure/SlidingWindow/RequestLoggerFactoryTest.php
+internal/Magento/Framework/App/Test/Unit/Backpressure/SlidingWindow/RequestLoggerFactoryTest.php
+Magento/Framework/App/Test/Unit/Backpressure/SlidingWindow/RequestLoggerFactoryTest.php
+Framework/App/Test/Unit/Backpressure/SlidingWindow/RequestLoggerFactoryTest.php
+App/Test/Unit/Backpressure/SlidingWindow/RequestLoggerFactoryTest.php
+Test/Unit/Backpressure/SlidingWindow/RequestLoggerFactoryTest.php
+Unit/Backpressure/SlidingWindow/RequestLoggerFactoryTest.php
+Backpressure/SlidingWindow/RequestLoggerFactoryTest.php
+SlidingWindow/RequestLoggerFactoryTest.php
+RequestLoggerFactoryTest.php
 lib/internal/Magento/Framework/App/Test/Unit/Backpressure/SlidingWindow/RedisRequestLoggerTest.php
 internal/Magento/Framework/App/Test/Unit/Backpressure/SlidingWindow/RedisRequestLoggerTest.php
 Magento/Framework/App/Test/Unit/Backpressure/SlidingWindow/RedisRequestLoggerTest.php
