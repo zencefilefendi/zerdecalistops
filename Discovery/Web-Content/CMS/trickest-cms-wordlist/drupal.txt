@@ -773,6 +773,7 @@ core/config/install/core.menu.static_menu_link_overrides.yml
 core/.cspell.json
 core/.deprecation-ignore.txt
 core/COPYRIGHT.txt
+core/CLAUDE.md
 core/phpstan-partial.neon
 core/phpstan.neon.dist
 core/INSTALL.sqlite.txt
@@ -3472,6 +3473,7 @@ core/.yarnrc.yml
 core/.prettierignore
 core/INSTALL.mysql.txt
 core/phpcs.xml.dist
+core/AGENTS.md
 core/.phpstan-baseline.php
 core/misc/logo/LICENSE.txt
 core/misc/logo/drupal-logo.svg
@@ -12449,6 +12451,7 @@ core/modules/content_translation/src/Hook/ContentTranslationFormHooks.php
 core/modules/content_translation/content_translation.libraries.yml
 core/modules/content_translation/js/content_translation.admin.js
 core/modules/content_translation/content_translation.services.yml
+core/modules/content_translation/content_translation.post_update.php
 core/modules/content_translation/tests/src/Unit/Menu/ContentTranslationLocalTasksTest.php
 core/modules/content_translation/tests/src/Unit/Access/ContentTranslationManageAccessCheckTest.php
 core/modules/content_translation/tests/src/Functional/ContentTranslationLanguageChangeTest.php
@@ -12458,6 +12461,7 @@ core/modules/content_translation/tests/src/Functional/Views/TranslationLinkTest.
 core/modules/content_translation/tests/src/Functional/Views/ContentTranslationViewsUITest.php
 core/modules/content_translation/tests/src/Functional/ContentTranslationUntranslatableFieldsTest.php
 core/modules/content_translation/tests/src/Functional/ContentTranslationEntityBundleUITest.php
+core/modules/content_translation/tests/src/Functional/ContentLanguageBaseFieldSyncWidgetTest.php
 core/modules/content_translation/tests/src/Functional/ContentTranslationSyncImageTest.php
 core/modules/content_translation/tests/src/Functional/ContentTranslationPendingRevisionTestBase.php
 core/modules/content_translation/tests/src/Functional/ContentTranslationOperationsTest.php

@@ -4930,6 +4930,8 @@ core/.deprecation-ignore.txt
 .deprecation-ignore.txt
 core/COPYRIGHT.txt
 COPYRIGHT.txt
+core/CLAUDE.md
+CLAUDE.md
 core/phpstan-partial.neon
 phpstan-partial.neon
 core/phpstan.neon.dist
@@ -22310,6 +22312,8 @@ core/INSTALL.mysql.txt
 INSTALL.mysql.txt
 core/phpcs.xml.dist
 phpcs.xml.dist
+core/AGENTS.md
+AGENTS.md
 core/.phpstan-baseline.php
 .phpstan-baseline.php
 core/misc/logo/LICENSE.txt
@@ -85884,6 +85888,10 @@ core/modules/content_translation/content_translation.services.yml
 modules/content_translation/content_translation.services.yml
 content_translation/content_translation.services.yml
 content_translation.services.yml
+core/modules/content_translation/content_translation.post_update.php
+modules/content_translation/content_translation.post_update.php
+content_translation/content_translation.post_update.php
+content_translation.post_update.php
 core/modules/content_translation/tests/src/Unit/Menu/ContentTranslationLocalTasksTest.php
 modules/content_translation/tests/src/Unit/Menu/ContentTranslationLocalTasksTest.php
 content_translation/tests/src/Unit/Menu/ContentTranslationLocalTasksTest.php
@@ -85951,6 +85959,13 @@ tests/src/Functional/ContentTranslationEntityBundleUITest.php
 src/Functional/ContentTranslationEntityBundleUITest.php
 Functional/ContentTranslationEntityBundleUITest.php
 ContentTranslationEntityBundleUITest.php
+core/modules/content_translation/tests/src/Functional/ContentLanguageBaseFieldSyncWidgetTest.php
+modules/content_translation/tests/src/Functional/ContentLanguageBaseFieldSyncWidgetTest.php
+content_translation/tests/src/Functional/ContentLanguageBaseFieldSyncWidgetTest.php
+tests/src/Functional/ContentLanguageBaseFieldSyncWidgetTest.php
+src/Functional/ContentLanguageBaseFieldSyncWidgetTest.php
+Functional/ContentLanguageBaseFieldSyncWidgetTest.php
+ContentLanguageBaseFieldSyncWidgetTest.php
 core/modules/content_translation/tests/src/Functional/ContentTranslationSyncImageTest.php
 modules/content_translation/tests/src/Functional/ContentTranslationSyncImageTest.php
 content_translation/tests/src/Functional/ContentTranslationSyncImageTest.php
