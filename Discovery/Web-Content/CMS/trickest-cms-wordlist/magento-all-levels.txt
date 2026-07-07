@@ -252622,6 +252622,14 @@ Magento/Sitemap/Helper/Data.php
 Sitemap/Helper/Data.php
 Helper/Data.php
 Data.php
+app/code/Magento/Amqp/Test/Unit/Setup/ConnectionValidatorTest.php
+code/Magento/Amqp/Test/Unit/Setup/ConnectionValidatorTest.php
+Magento/Amqp/Test/Unit/Setup/ConnectionValidatorTest.php
+Amqp/Test/Unit/Setup/ConnectionValidatorTest.php
+Test/Unit/Setup/ConnectionValidatorTest.php
+Unit/Setup/ConnectionValidatorTest.php
+Setup/ConnectionValidatorTest.php
+ConnectionValidatorTest.php
 app/code/Magento/Amqp/Test/Unit/Setup/ConfigOptionsListTest.php
 code/Magento/Amqp/Test/Unit/Setup/ConfigOptionsListTest.php
 Magento/Amqp/Test/Unit/Setup/ConfigOptionsListTest.php
