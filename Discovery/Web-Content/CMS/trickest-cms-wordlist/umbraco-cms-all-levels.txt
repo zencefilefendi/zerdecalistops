@@ -75516,6 +75516,13 @@ packages/core/resources/isUmbNotifications.function.ts
 core/resources/isUmbNotifications.function.ts
 resources/isUmbNotifications.function.ts
 isUmbNotifications.function.ts
+src/Umbraco.Web.UI.Client/src/packages/core/resources/resource.controller.test.ts
+Umbraco.Web.UI.Client/src/packages/core/resources/resource.controller.test.ts
+src/packages/core/resources/resource.controller.test.ts
+packages/core/resources/resource.controller.test.ts
+core/resources/resource.controller.test.ts
+resources/resource.controller.test.ts
+resource.controller.test.ts
 src/Umbraco.Web.UI.Client/src/packages/core/resources/extractUmbColorVariable.function.ts
 Umbraco.Web.UI.Client/src/packages/core/resources/extractUmbColorVariable.function.ts
 src/packages/core/resources/extractUmbColorVariable.function.ts
@@ -75551,6 +75558,13 @@ packages/core/resources/apiTypeValidators.function.ts
 core/resources/apiTypeValidators.function.ts
 resources/apiTypeValidators.function.ts
 apiTypeValidators.function.ts
+src/Umbraco.Web.UI.Client/src/packages/core/resources/api-interceptor.controller.test.ts
+Umbraco.Web.UI.Client/src/packages/core/resources/api-interceptor.controller.test.ts
+src/packages/core/resources/api-interceptor.controller.test.ts
+packages/core/resources/api-interceptor.controller.test.ts
+core/resources/api-interceptor.controller.test.ts
+resources/api-interceptor.controller.test.ts
+api-interceptor.controller.test.ts
 src/Umbraco.Web.UI.Client/src/packages/core/resources/try-execute/index.ts
 Umbraco.Web.UI.Client/src/packages/core/resources/try-execute/index.ts
 src/packages/core/resources/try-execute/index.ts
