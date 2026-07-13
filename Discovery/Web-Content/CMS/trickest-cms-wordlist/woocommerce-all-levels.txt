@@ -54541,6 +54541,12 @@ tests/php/includes/wc-attribute-functions-test.php
 php/includes/wc-attribute-functions-test.php
 includes/wc-attribute-functions-test.php
 wc-attribute-functions-test.php
+plugins/woocommerce/tests/php/includes/wc-template-functions-test.php
+woocommerce/tests/php/includes/wc-template-functions-test.php
+tests/php/includes/wc-template-functions-test.php
+php/includes/wc-template-functions-test.php
+includes/wc-template-functions-test.php
+wc-template-functions-test.php
 plugins/woocommerce/tests/php/includes/importer/sample.csv
 woocommerce/tests/php/includes/importer/sample.csv
 tests/php/includes/importer/sample.csv
@@ -97422,6 +97428,10 @@ plugins/woocommerce/changelog/fix-hpos-data-cache-corrupt-entry-fatal
 woocommerce/changelog/fix-hpos-data-cache-corrupt-entry-fatal
 changelog/fix-hpos-data-cache-corrupt-entry-fatal
 fix-hpos-data-cache-corrupt-entry-fatal
+plugins/woocommerce/changelog/65734-translators-comment-cron-interval
+woocommerce/changelog/65734-translators-comment-cron-interval
+changelog/65734-translators-comment-cron-interval
+65734-translators-comment-cron-interval
 plugins/woocommerce/changelog/65541-fix-checkout-shipping-cache-homeboy
 woocommerce/changelog/65541-fix-checkout-shipping-cache-homeboy
 changelog/65541-fix-checkout-shipping-cache-homeboy
@@ -97618,6 +97628,10 @@ plugins/woocommerce/changelog/update-products-control-ts
 woocommerce/changelog/update-products-control-ts
 changelog/update-products-control-ts
 update-products-control-ts
+plugins/woocommerce/changelog/pr-64372
+woocommerce/changelog/pr-64372
+changelog/pr-64372
+pr-64372
 plugins/woocommerce/changelog/update-deflag-commerce-recommendations
 woocommerce/changelog/update-deflag-commerce-recommendations
 changelog/update-deflag-commerce-recommendations
@@ -98186,6 +98200,10 @@ plugins/woocommerce/changelog/fix-coupon-validate-filter-polarity
 woocommerce/changelog/fix-coupon-validate-filter-polarity
 changelog/fix-coupon-validate-filter-polarity
 fix-coupon-validate-filter-polarity
+plugins/woocommerce/changelog/fix-65832-brand-nav-cache-poisoning
+woocommerce/changelog/fix-65832-brand-nav-cache-poisoning
+changelog/fix-65832-brand-nav-cache-poisoning
+fix-65832-brand-nav-cache-poisoning
 plugins/woocommerce/changelog/dsgwoo-1343-hide-downloads-metabox
 woocommerce/changelog/dsgwoo-1343-hide-downloads-metabox
 changelog/dsgwoo-1343-hide-downloads-metabox
