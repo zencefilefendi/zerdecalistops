@@ -18431,6 +18431,7 @@ app/code/Magento/SalesRule/Test/Mftf/Test/EndToEndB2CLoggedInUserTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/AdminCreateCartPriceRuleWithSubtotalInclTaxTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/StorefrontCartPriceRuleCountryTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/StorefrontReuseCouponCodeAfterOrderCanceledTest.xml
+app/code/Magento/SalesRule/Test/Mftf/Test/StorefrontCouponCartRuleOverridesAutoRuleWithSubtotalConditionTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/AdminCreateCartPriceRuleAndVerifyRuleConditionIsNotAppliedTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/StoreFrontAddZeroPriceProductToCardWithFixedAmountPriceRuleTest.xml
 app/code/Magento/SalesRule/Test/Mftf/Test/AdminCreateCartPriceRuleWithMatchingCategoryAndVerifyRuleConditionIsAppliedTest.xml
@@ -21674,6 +21675,7 @@ app/code/Magento/Quote/Test/Unit/Plugin/Webapi/ValidateProductWebsiteAssignmentT
 app/code/Magento/Quote/Test/Unit/Model/QuoteRepositoryTest.php
 app/code/Magento/Quote/Test/Unit/Model/ShippingMethodManagementTest.php
 app/code/Magento/Quote/Test/Unit/Model/BillingAddressManagementTest.php
+app/code/Magento/Quote/Test/Unit/Model/CustomerCartMutexTest.php
 app/code/Magento/Quote/Test/Unit/Model/Backpressure/OrderLimitConfigManagerTest.php
 app/code/Magento/Quote/Test/Unit/Model/Backpressure/WebapiRequestTypeExtractorTest.php
 app/code/Magento/Quote/Test/Unit/Model/QuoteTest.php
@@ -21780,6 +21782,7 @@ app/code/Magento/Quote/Model/BillingAddressManagement.php
 app/code/Magento/Quote/Model/EstimateAddress.php
 app/code/Magento/Quote/Model/QuoteIdMutex.php
 app/code/Magento/Quote/Model/QuoteIdMask.php
+app/code/Magento/Quote/Model/CustomerCartMutexException.php
 app/code/Magento/Quote/Model/QuoteIdToMaskedQuoteIdInterface.php
 app/code/Magento/Quote/Model/SubmitQuoteValidator.php
 app/code/Magento/Quote/Model/Shipping.php
@@ -21794,6 +21797,7 @@ app/code/Magento/Quote/Model/QuoteAddressValidationService.php
 app/code/Magento/Quote/Model/ShippingAddressManagementInterface.php
 app/code/Magento/Quote/Model/QuoteMutex.php
 app/code/Magento/Quote/Model/CartSearchResults.php
+app/code/Magento/Quote/Model/CustomerCartMutexInterface.php
 app/code/Magento/Quote/Model/CartAddressMutex.php
 app/code/Magento/Quote/Model/ResourceModel/LoadQuoteByIdMutex.php
 app/code/Magento/Quote/Model/ResourceModel/QuoteItemRetriever.php
@@ -21929,6 +21933,7 @@ app/code/Magento/Quote/Model/Webapi/ParamOverriderCartId.php
 app/code/Magento/Quote/Model/Config.php
 app/code/Magento/Quote/Model/AddressAdditionalDataProcessor.php
 app/code/Magento/Quote/Model/ShippingAssignment.php
+app/code/Magento/Quote/Model/CustomerCartMutex.php
 app/code/Magento/Quote/Model/ShippingAddressManagement.php
 app/code/Magento/Quote/Model/CartMutexInterface.php
 app/code/Magento/Quote/Model/AddressAdditionalData.php
@@ -23661,7 +23666,6 @@ app/code/Magento/Checkout/Test/Unit/Model/Config/Source/Cart/SummaryTest.php
 app/code/Magento/Checkout/Test/Unit/Model/GuestShippingInformationManagementTest.php
 app/code/Magento/Checkout/Test/Unit/Model/SidebarTest.php
 app/code/Magento/Checkout/Test/Unit/Model/Type/OnepageTest.php
-app/code/Magento/Checkout/Test/Unit/Model/Cart/AjaxMessageResponseTest.php
 app/code/Magento/Checkout/Test/Unit/Model/Cart/RequestInfoFilterTest.php
 app/code/Magento/Checkout/Test/Unit/Model/Cart/CollectQuoteTest.php
 app/code/Magento/Checkout/Test/Unit/Model/Cart/RequestInfoFilterCompositeTest.php
@@ -24312,7 +24316,6 @@ app/code/Magento/Checkout/Model/Cart/CheckoutSummaryConfigProvider.php
 app/code/Magento/Checkout/Model/Cart/CollectQuote.php
 app/code/Magento/Checkout/Model/Cart/RequestInfoFilterComposite.php
 app/code/Magento/Checkout/Model/Cart/RequestInfoFilterInterface.php
-app/code/Magento/Checkout/Model/Cart/AjaxMessageResponse.php
 app/code/Magento/Checkout/Model/Cart/RequestQuantityProcessor.php
 app/code/Magento/Checkout/Model/Cart/RequestInfoFilter.php
 app/code/Magento/Checkout/Model/CompositeConfigProvider.php

@@ -1,5 +1,4 @@
 .travis.yml
-AGENTS.md
 doc/index.html
 index.html
 doc/install/README
@@ -70829,6 +70828,16 @@ dev/examples/code/create_order.php
 examples/code/create_order.php
 code/create_order.php
 create_order.php
+.agents/AGENTS.md
+AGENTS.md
+.agents/skills/code-review/SKILL.md
+skills/code-review/SKILL.md
+code-review/SKILL.md
+SKILL.md
+.agents/skills/add-unit-test/SKILL.md
+skills/add-unit-test/SKILL.md
+add-unit-test/SKILL.md
+SKILL.md
 .pre-commit-config.yaml
 DCO
 ChangeLog
