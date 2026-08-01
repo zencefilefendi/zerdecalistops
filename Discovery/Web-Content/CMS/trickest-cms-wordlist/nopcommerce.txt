@@ -171,6 +171,7 @@ src/Tests/Nop.Tests/SqLiteNopDataProvider.cs
 src/Tests/Nop.Tests/BaseNopTest.cs
 src/Tests/Nop.Tests/TestDataProviderManager.cs
 src/Tests/Nop.Tests/TestSmtpBuilder.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Mvc/ModelBinding/Binders/NopModelBinderProviderTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Public/Factories/WidgetModelFactoryTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Public/Factories/NewsletterModelFactoryTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Public/Factories/CountryModelFactoryTests.cs
@@ -3670,6 +3671,7 @@ src/Presentation/Nop.Web/wwwroot/icons/icons_0/html_code.html
 src/Presentation/Nop.Web/wwwroot/icons/icons_0/safari-pinned-tab.svg
 src/Presentation/Nop.Web/wwwroot/icons/icons_0/site.webmanifest
 src/Presentation/Nop.Web/wwwroot/icons/icons_0/browserconfig.xml
+src/Presentation/Nop.Web/wwwroot/lib/summernote/summernote-link-browse.js
 src/Presentation/Nop.Web/wwwroot/lib/summernote/summernote-image-attributes.js
 src/Presentation/Nop.Web/Nop.Web.csproj
 src/Presentation/Nop.Web/web.config
