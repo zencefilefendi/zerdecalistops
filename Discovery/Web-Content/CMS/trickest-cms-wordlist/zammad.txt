@@ -1359,6 +1359,11 @@ Gemfile.lock
 .gitlab/dependabot.yml
 .gitlab/verify_vite_bundle_size.rb
 .gitlab/check_database_migration_consistency.sh
+.gitlab/docker/ZammadTestB-1.0.0.yaml
+.gitlab/docker/ZammadTestA-1.0.0.zpm
+.gitlab/docker/ZammadTestA-1.0.0.yaml
+.gitlab/docker/ZammadTestB-1.0.0.zpm
+.gitlab/docker/yaml_to_zpm.rb
 .gitlab/configure_environment.rb
 .gitlab/renovate.json
 .gitlab/dependency_digest.rb
@@ -1864,6 +1869,7 @@ app/graphql/gql/types/enum/knowledge_base/sorting_mode_type.rb
 app/graphql/gql/types/enum/knowledge_base/answer_screen_type.rb
 app/graphql/gql/types/enum/knowledge_base/permission_access_type.rb
 app/graphql/gql/types/enum/knowledge_base/visibility_type.rb
+app/graphql/gql/types/enum/knowledge_base/search_entity_type.rb
 app/graphql/gql/types/enum/knowledge_base/answer_screen_behavior_type.rb
 app/graphql/gql/types/enum/knowledge_base/schedulable_visibility_type.rb
 app/graphql/gql/types/enum/user_error_exception_type.rb
@@ -2103,6 +2109,7 @@ app/graphql/gql/fields/scoped_field.rb
 app/graphql/gql/fields/base_field.rb
 app/graphql/gql/concerns/handles_knowledge_base_locale.rb
 app/graphql/gql/concerns/has_nested_graphql_name.rb
+app/graphql/gql/concerns/searches_knowledge_base_answers.rb
 app/graphql/gql/concerns/handles_authorization.rb
 app/graphql/gql/concerns/handles_setting_check.rb
 app/graphql/gql/concerns/handles_throttling.rb
@@ -4477,6 +4484,7 @@ app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/TicketViewersD
 app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/ArticleBubble.vue
 app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/ArticleSeparatorMore.vue
 app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/TicketViewerItem.vue
+app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/TicketTimeAccountingDialog.vue
 app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/ArticleReactionBadge.vue
 app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/__tests__/ArticleRemoteContentBadge.spec.ts
 app/frontend/apps/mobile/pages/ticket/components/TicketDetailView/__tests__/TicketObjectAttributes.spec.ts
@@ -4538,6 +4546,7 @@ app/frontend/apps/mobile/pages/ticket/__tests__/ticket-information-organization.
 app/frontend/apps/mobile/pages/ticket/__tests__/mocks/overview.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/mocks/articles.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/mocks/detail-view.ts
+app/frontend/apps/mobile/pages/ticket/__tests__/ticket-detail-view-time-accounting.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/ticket-information-user.spec.ts
 app/frontend/apps/mobile/pages/ticket/__tests__/ticket-create.spec.ts
 app/frontend/apps/mobile/pages/account/graphql/queries/userCurrentAvatarActive.mocks.ts
@@ -4786,9 +4795,6 @@ app/frontend/apps/desktop/components/CommonActionMenu/CommonActionMenu.vue
 app/frontend/apps/desktop/components/CommonActionMenu/__tests__/CommonActionMenu.spec.ts
 app/frontend/apps/desktop/components/CommonContentPanel/__tests__/CommonContentPanel.spec.ts
 app/frontend/apps/desktop/components/CommonContentPanel/CommonContentPanel.vue
-app/frontend/apps/desktop/components/KnowledgeBaseAnswerIcon/visibilityMeta.ts
-app/frontend/apps/desktop/components/KnowledgeBaseAnswerIcon/__tests__/KnowledgeBaseAnswerIcon.spec.ts
-app/frontend/apps/desktop/components/KnowledgeBaseAnswerIcon/KnowledgeBaseAnswerIcon.vue
 app/frontend/apps/desktop/components/CommonTicketEscalationIndicator/CommonTicketEscalationIndicatorItem.vue
 app/frontend/apps/desktop/components/CommonTicketEscalationIndicator/CommonTicketEscalationIndicator.vue
 app/frontend/apps/desktop/components/CommonTicketEscalationIndicator/__tests__/CommonTicketEscalationIndicator.spec.ts
@@ -4958,8 +4964,6 @@ app/frontend/apps/desktop/components/BetaUi/composables/__tests__/useBetaUiFeedb
 app/frontend/apps/desktop/components/BetaUi/composables/__tests__/useBetaUiDisclaimer.spec.ts
 app/frontend/apps/desktop/components/ConnectionLostDialog/ConnectionLostDialog.vue
 app/frontend/apps/desktop/components/ConnectionLostDialog/__tests__/ConnectionLostDialog.spec.ts
-app/frontend/apps/desktop/components/KnowledgeBaseCategoryIcon/KnowledgeBaseCategoryIcon.vue
-app/frontend/apps/desktop/components/KnowledgeBaseCategoryIcon/__tests__/KnowledgeBaseCategoryIcon.spec.ts
 app/frontend/apps/desktop/components/User/UserListTable.vue
 app/frontend/apps/desktop/components/User/UserInfo.vue
 app/frontend/apps/desktop/components/User/__tests__/UserPopoverWithTrigger.spec.ts
@@ -5005,13 +5009,17 @@ app/frontend/apps/desktop/components/Search/QuickSearch/__tests__/QuickSearch.sp
 app/frontend/apps/desktop/components/Search/QuickSearch/entities/Organization.vue
 app/frontend/apps/desktop/components/Search/QuickSearch/entities/User.vue
 app/frontend/apps/desktop/components/Search/QuickSearch/entities/Ticket.vue
+app/frontend/apps/desktop/components/Search/QuickSearch/entities/__tests__/KnowledgeBaseAnswer.spec.ts
+app/frontend/apps/desktop/components/Search/QuickSearch/entities/KnowledgeBaseAnswer.vue
 app/frontend/apps/desktop/components/Search/QuickSearch/QuickSearchResultList/skeleton/QuickSearchResultListSkeleton.vue
 app/frontend/apps/desktop/components/Search/QuickSearch/QuickSearchResultList/QuickSearchResultList.vue
 app/frontend/apps/desktop/components/Search/QuickSearch/QuickSearchResultList/__tests__/QuickSearchResultList.spec.ts
 app/frontend/apps/desktop/components/Search/QuickSearch/QuickSearch.vue
 app/frontend/apps/desktop/components/Search/plugins/organization.ts
 app/frontend/apps/desktop/components/Search/plugins/user.ts
+app/frontend/apps/desktop/components/Search/plugins/knowledgeBaseAnswer.ts
 app/frontend/apps/desktop/components/Search/plugins/index.ts
+app/frontend/apps/desktop/components/Search/plugins/__tests__/index.spec.ts
 app/frontend/apps/desktop/components/Search/plugins/ticket.ts
 app/frontend/apps/desktop/components/Search/composables/useSearchTitle.ts
 app/frontend/apps/desktop/components/Search/composables/__tests__/useSearchTitle.spec.ts
@@ -5083,6 +5091,24 @@ app/frontend/apps/desktop/components/CommonSelect/CommonSelect.vue
 app/frontend/apps/desktop/components/CommonSelect/__tests__/CommonSelect.spec.ts
 app/frontend/apps/desktop/components/CommonSelect/useCommonSelect.ts
 app/frontend/apps/desktop/components/CommonSelect/CommonSelectItem.vue
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswerIcon/visibilityMeta.ts
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswerIcon/__tests__/KnowledgeBaseAnswerIcon.spec.ts
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswerIcon/KnowledgeBaseAnswerIcon.vue
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerPopover.vue
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerAttributes.vue
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerPopoverWithTrigger/graphql/queries/knowledgeBaseAnswerInfoForPopover.mocks.ts
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerPopoverWithTrigger/graphql/queries/knowledgeBaseAnswerInfoForPopover.graphql
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerPopoverWithTrigger/graphql/queries/knowledgeBaseAnswerInfoForPopover.api.ts
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerPopoverWithTrigger/skeleton/KnowledgeBaseAnswerPopoverSkeleton.vue
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerPopoverWithTrigger/skeleton/__tests__/KnowledgeBaseAnswerPopoverSkeleton.spec.ts
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerPopoverWithTrigger/KnowledgeBaseAnswerPopoverContent.vue
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/__tests__/KnowledgeBaseAnswerPopover.spec.ts
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/__tests__/KnowledgeBaseAnswerPopoverWithTrigger.spec.ts
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswer/KnowledgeBaseAnswerPopoverWithTrigger.vue
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseCategoryIcon/KnowledgeBaseCategoryIcon.vue
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseCategoryIcon/__tests__/KnowledgeBaseCategoryIcon.spec.ts
+app/frontend/apps/desktop/components/KnowledgeBase/KnowledgeBaseAnswerTable.vue
+app/frontend/apps/desktop/components/KnowledgeBase/__tests__/KnowledgeBaseAnswerTable.spec.ts
 app/frontend/apps/desktop/components/ThemeSwitch/ThemeSwitch.vue
 app/frontend/apps/desktop/components/ThemeSwitch/__tests__/ThemeSwitch.spec.ts
 app/frontend/apps/desktop/components/Form/fields/FieldImageUpload/FieldImageUploadInput.vue
@@ -5626,6 +5652,7 @@ app/frontend/apps/desktop/pages/knowledge-base/components/KnowledgeBaseSearch/Kn
 app/frontend/apps/desktop/pages/knowledge-base/components/KnowledgeBaseSearch/KnowledgeBaseSearchResults.vue
 app/frontend/apps/desktop/pages/knowledge-base/components/KnowledgeBaseSearch/KnowledgeBaseSearchResultsSkeleton.vue
 app/frontend/apps/desktop/pages/knowledge-base/utils/knowledgeBaseBreadcrumbItems.ts
+app/frontend/apps/desktop/pages/knowledge-base/utils/knowledgeBaseCategoryGrid.ts
 app/frontend/apps/desktop/pages/knowledge-base/utils/__tests__/knowledgeBaseBrowsedTitle.spec.ts
 app/frontend/apps/desktop/pages/knowledge-base/utils/__tests__/knowledgeBaseBreadcrumbItems.spec.ts
 app/frontend/apps/desktop/pages/knowledge-base/utils/knowledgeBaseBrowsedTitle.ts
@@ -5797,8 +5824,6 @@ app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInf
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseActions.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/types.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAiSuggested.vue
-app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/KnowledgeBaseAnswerAttributes.vue
-app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/utils/knowledgeBaseAnswerLink.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAiDraftFlyout.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAiDraftFlyoutAnswerSkeleton.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseLinks.vue
@@ -5808,11 +5833,9 @@ app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInf
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/__tests__/TicketKnowledgeBaseLinks.spec.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/__tests__/TicketNewKnowledgeBaseAnswer.spec.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/__tests__/TicketKnowledgeBaseAiDraftFlyout.spec.ts
-app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/__tests__/TicketKnowledgeBaseAnswerPopover.spec.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/__tests__/TicketKnowledgeBaseAiSuggested.spec.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAnswerSkeleton.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAiDraftFlyoutAnswer.vue
-app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAnswerPopover.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/composables/useKnowledgeBaseAnswerLinks.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketAccountedTime.vue
@@ -6550,6 +6573,7 @@ app/frontend/apps/desktop/entities/knowledge-base/utils/routeLocation.ts
 app/frontend/apps/desktop/entities/knowledge-base/utils/__tests__/answerEditorTools.spec.ts
 app/frontend/apps/desktop/entities/knowledge-base/utils/answerEditorTools.ts
 app/frontend/apps/desktop/entities/knowledge-base/utils/translationLocale.ts
+app/frontend/apps/desktop/entities/knowledge-base/utils/knowledgeBaseAnswerLink.ts
 app/frontend/apps/desktop/entities/knowledge-base/utils/taskbarTabKey.ts
 app/frontend/apps/desktop/entities/knowledge-base/stores/knowledgeBase.ts
 app/frontend/apps/desktop/entities/knowledge-base/__tests__/useKnowledgeBaseAccess.spec.ts
@@ -7429,6 +7453,7 @@ app/frontend/shared/entities/ticket/composables/useTicketEdit.ts
 app/frontend/shared/entities/ticket/composables/__tests__/useTicketCreateView.spec.ts
 app/frontend/shared/entities/ticket/composables/__tests__/useTicketView.spec.ts
 app/frontend/shared/entities/ticket/composables/useTicketCreate.ts
+app/frontend/shared/entities/ticket/composables/useTicketTimeAccountingForm.ts
 app/frontend/shared/entities/useEntity.ts
 app/frontend/shared/entities/organization/types.ts
 app/frontend/shared/entities/organization/graphql/queries/organization.graphql
@@ -7906,8 +7931,8 @@ app/frontend/tests/graphql/factories/types/Session.ts
 app/frontend/tests/graphql/factories/types/UserTaskbarItem.ts
 app/frontend/tests/graphql/factories/types/Avatar.ts
 app/frontend/tests/graphql/factories/types/TicketState.ts
-app/frontend/tests/graphql/factories/types/SearchResult.ts
 app/frontend/tests/graphql/factories/types/Organization.ts
+app/frontend/tests/graphql/factories/types/Item.ts
 app/frontend/tests/graphql/factories/types/Group.ts
 app/frontend/tests/graphql/factories/types/Checklist.ts
 app/frontend/tests/graphql/factories/types/FormUpdaterUser.ts
@@ -9413,6 +9438,7 @@ script/build/remove_superseded_system_gems.rb
 script/build/deploy_archives.sh
 script/build/cleanup.sh
 script/build/update_test_timings.rb
+script/build/unpack_addon_packages.rb
 script/bootstrap.sh
 script/systemd/zammad.service
 script/systemd/zammad-websocket.service
@@ -9617,6 +9643,7 @@ lib/tasks/zammad/store/move_files.rake
 lib/tasks/zammad/store/verify_files.rake
 lib/tasks/zammad/store/move_files.rb
 lib/tasks/zammad/store/verify_files.rb
+lib/tasks/zammad/graphql_introspection.rake
 lib/tasks/zammad/system_report/plugins.rake
 lib/tasks/zammad/system_report/plugins.rb
 lib/tasks/zammad/system_report.rake
@@ -9646,6 +9673,7 @@ lib/tasks/zammad/package/verify.rb
 lib/tasks/zammad/package/update_api.rake
 lib/tasks/zammad/package/precompile.rb
 lib/tasks/zammad/package/post_install.rb
+lib/tasks/zammad/package/install_dir.rake
 lib/tasks/zammad/package/post_install.rake
 lib/tasks/zammad/package/migrate.rake
 lib/tasks/zammad/package/reinstall.rake
@@ -9656,13 +9684,16 @@ lib/tasks/zammad/package/reinstall.rb
 lib/tasks/zammad/package/install_api.rake
 lib/tasks/zammad/package/pnpm_hoisted_mode.rake
 lib/tasks/zammad/package/list.rake
+lib/tasks/zammad/package/install_dir.rb
 lib/tasks/zammad/package/reinstall_all.rb
 lib/tasks/zammad/package/install.rake
 lib/tasks/zammad/package/uninstall_all_files.rake
 lib/tasks/zammad/package/list_api.rb
 lib/tasks/zammad/package/install.rb
 lib/tasks/zammad/package/precompile.rake
+lib/tasks/zammad/package/uninstall_dir.rb
 lib/tasks/zammad/package/reinstall_all.rake
+lib/tasks/zammad/package/uninstall_dir.rake
 lib/tasks/zammad/package/uninstall.rake
 lib/tasks/zammad/package/verify.rake
 lib/tasks/zammad/command.rb
@@ -9686,6 +9717,7 @@ lib/zammad/safe_mode.rb
 lib/zammad/application/initializer/session_store.rb
 lib/zammad/application/initializer/db_preflight_check.rb
 lib/zammad/logging.rb
+lib/zammad/deployment.rb
 lib/zammad/process_debug.rb
 lib/zammad/service/configuration.rb
 lib/zammad/service/redis.rb
@@ -12771,6 +12803,7 @@ spec/lib/tasks/zammad/store/verify_files_spec.rb
 spec/lib/tasks/zammad/command_spec.rb
 spec/lib/tasks/zammad/package/update_api_spec.rb
 spec/lib/tasks/zammad/package/list_api_spec.rb
+spec/lib/tasks/zammad/package/uninstall_dir_spec.rb
 spec/lib/tasks/zammad/package/install_api_spec.rb
 spec/lib/mail/encodings_spec.rb
 spec/lib/filter_processor/match/ends_with_spec.rb
@@ -12783,6 +12816,7 @@ spec/lib/rack/middleware/secure_context_spec.rb
 spec/lib/active_record/locking/pessimistic_spec.rb
 spec/lib/zammad/process_debug_spec.rb
 spec/lib/zammad/trusted_proxies_spec.rb
+spec/lib/zammad/deployment_spec.rb
 spec/lib/zammad/service/redis_spec.rb
 spec/lib/zammad/service/configuration_spec.rb
 spec/lib/image_helper_spec.rb

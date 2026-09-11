@@ -43,6 +43,7 @@ test/phpunit/imap_header.txt
 test/phpunit/Functions2LibTest.php
 test/phpunit/AssetModelTest.php
 test/phpunit/WorkstationTest.php
+test/phpunit/PhpSessionInDbTest.php
 test/phpunit/MemoTest.php
 test/phpunit/FunctionsNumToWordTest.php
 test/phpunit/SecurityTest.php
@@ -7187,6 +7188,7 @@ htdocs/install/mysql/tables/llx_deliverydet_extrafields.sql
 htdocs/install/mysql/tables/llx_usergroup.sql
 htdocs/install/mysql/tables/llx_bank_record-bank.sql
 htdocs/install/mysql/tables/llx_categorie_propal-propal.sql
+htdocs/install/mysql/tables/llx_deletion_log.key.sql
 htdocs/install/mysql/tables/llx_onlinesignature.sql
 htdocs/install/mysql/tables/llx_propal_extrafields.key.sql
 htdocs/install/mysql/tables/llx_tva.sql
@@ -7369,6 +7371,7 @@ htdocs/install/mysql/tables/llx_bookmark.key.sql
 htdocs/install/mysql/tables/llx_c_currencies.sql
 htdocs/install/mysql/tables/llx_mailing-mailing.sql
 htdocs/install/mysql/tables/llx_categorie_fournisseur.key.sql
+htdocs/install/mysql/tables/llx_deletion_log.sql
 htdocs/install/mysql/tables/llx_c_exp_tax_range-expensereport.sql
 htdocs/install/mysql/tables/llx_links.key.sql
 htdocs/install/mysql/tables/llx_c_subtotals_titles-subtotals.key.sql
@@ -12326,6 +12329,7 @@ htdocs/ai/tools/reports.class.php
 htdocs/ai/tools/crud_objects.class.php
 htdocs/ai/tools/products.class.php
 htdocs/ai/tools/invoices.class.php
+htdocs/ai/tools/coffeemaker.class.php
 htdocs/ai/tools/api_bridge.class.php
 htdocs/ai/ajax/list_models.php
 htdocs/ai/ajax/generate_content.php
@@ -12642,6 +12646,7 @@ htdocs/website/websiteaccount_card.php
 htdocs/website/index.php
 htdocs/website/class/website.class.php
 htdocs/website/class/websitepage.class.php
+htdocs/website/class/api_websites.class.php
 htdocs/website/lib/websiteaccount.lib.php
 htdocs/website/lib/website.lib.php
 htdocs/waf.inc.php
