@@ -956,6 +956,7 @@ src/Sylius/Bundle/UiBundle/tests/Functional/composer.json
 src/Sylius/Bundle/UiBundle/tests/Functional/console
 src/Sylius/Bundle/UiBundle/tests/Functional/Kernel.php
 src/Sylius/Bundle/UiBundle/tests/Functional/src/SomeTwigComponent.php
+src/Sylius/Bundle/UiBundle/tests/Functional/config/packages/twig_component.yaml
 src/Sylius/Bundle/UiBundle/tests/Functional/config/packages/security.yaml
 src/Sylius/Bundle/UiBundle/tests/Functional/config/packages/framework.yaml
 src/Sylius/Bundle/UiBundle/tests/Functional/templates/blocks/twigComponent/someTwigComponent.html.twig
@@ -6837,6 +6838,7 @@ src/Sylius/Bundle/AdminBundle/templates/channel_pricing_log_entry/grid/field/ori
 src/Sylius/Bundle/AdminBundle/templates/channel_pricing_log_entry/grid/field/price.html.twig
 src/Sylius/Bundle/AdminBundle/templates/channel_pricing_log_entry/index.html.twig
 src/Sylius/Bundle/AdminBundle/templates/channel_pricing_log_entry/index/content/header/breadcrumbs.html.twig
+src/Sylius/Bundle/AdminBundle/templates/payment/macro/state_label.html.twig
 src/Sylius/Bundle/AdminBundle/templates/shipping_category/form/sections/general.html.twig
 src/Sylius/Bundle/AdminBundle/templates/shipping_category/form/sections/general/name.html.twig
 src/Sylius/Bundle/AdminBundle/templates/shipping_category/form/sections/general/code.html.twig
@@ -8416,6 +8418,7 @@ src/Sylius/Component/Core/ProductReviewTransitions.php
 src/Sylius/Component/Core/OrderProcessing/OrderAdjustmentsClearer.php
 src/Sylius/Component/Core/OrderProcessing/OrderPricesRecalculator.php
 src/Sylius/Component/Core/OrderProcessing/OrderPromotionProcessor.php
+src/Sylius/Component/Core/OrderProcessing/OrderItemUnitAdjustmentsPreloader.php
 src/Sylius/Component/Core/OrderProcessing/ShippingChargesProcessor.php
 src/Sylius/Component/Core/OrderProcessing/OrderShipmentProcessor.php
 src/Sylius/Component/Core/OrderProcessing/OrderPaymentProcessor.php
@@ -8591,6 +8594,7 @@ src/Sylius/Component/Core/tests/OrderProcessing/ShippingChargesProcessorTest.php
 src/Sylius/Component/Core/tests/OrderProcessing/OrderPaymentProcessorTest.php
 src/Sylius/Component/Core/tests/OrderProcessing/OrderTaxesProcessorTest.php
 src/Sylius/Component/Core/tests/OrderProcessing/OrderPricesRecalculatorTest.php
+src/Sylius/Component/Core/tests/OrderProcessing/OrderItemUnitAdjustmentsPreloaderTest.php
 src/Sylius/Component/Core/tests/Calculator/ProductVariantPriceCalculatorTest.php
 src/Sylius/Component/Core/tests/StateResolver/OrderStateResolverTest.php
 src/Sylius/Component/Core/tests/StateResolver/OrderShippingStateResolverTest.php
@@ -11851,6 +11855,7 @@ config/packages/test_cached/security.yaml
 config/packages/test_cached/fidry_alice_data_fixtures.yaml
 config/packages/test_cached/framework.yaml
 config/packages/doctrine_migrations.yaml
+config/packages/twig_component.yaml
 config/packages/uid.yaml
 config/packages/twig.yaml
 config/packages/routing.yaml

@@ -216,6 +216,7 @@ erpnext/selling/print_format/return_pos_invoice/__init__.py
 erpnext/selling/print_format/return_pos_invoice/return_pos_invoice.json
 erpnext/selling/print_format/quotation_standard/__init__.py
 erpnext/selling/print_format/quotation_standard/quotation_standard.json
+erpnext/selling/insights_workbook/selling/selling.json
 erpnext/selling/dashboard_chart/top_customers/top_customers.json
 erpnext/selling/dashboard_chart/sales_order_trends/sales_order_trends.json
 erpnext/selling/dashboard_chart/sales_order_analysis/sales_order_analysis.json
@@ -679,6 +680,7 @@ erpnext/buying/print_format/purchase_order_with_item_image/__init__.py
 erpnext/buying/print_format/purchase_order_with_item_image/purchase_order_with_item_image.json
 erpnext/buying/print_format/purchase_order_modern_with_images/__init__.py
 erpnext/buying/print_format/purchase_order_modern_with_images/purchase_order_modern_with_images.json
+erpnext/buying/insights_workbook/buying/buying.json
 erpnext/buying/dashboard_chart/material_request_analysis/material_request_analysis.json
 erpnext/buying/dashboard_chart/purchase_order_trends/purchase_order_trends.json
 erpnext/buying/dashboard_chart/purchase_order_analysis/purchase_order_analysis.json
@@ -859,6 +861,7 @@ erpnext/domains/distribution.py
 erpnext/domains/retail.py
 erpnext/domains/manufacturing.py
 erpnext/domains/services.py
+erpnext/utilities/party_import_provider.py
 erpnext/utilities/__init__.py
 erpnext/utilities/README.md
 erpnext/utilities/bulk_transaction.py
@@ -869,6 +872,7 @@ erpnext/utilities/web_form/addresses/addresses.js
 erpnext/utilities/web_form/addresses/addresses.json
 erpnext/utilities/web_form/addresses/addresses.py
 erpnext/utilities/transaction_base.py
+erpnext/utilities/test_party_import_provider.py
 erpnext/utilities/email_template.py
 erpnext/utilities/regional.py
 erpnext/utilities/sidebar/utilities/utilities.json
@@ -940,6 +944,7 @@ erpnext/assets/number_card/new_assets_(this_year)/new_assets_(this_year).json
 erpnext/assets/__init__.py
 erpnext/assets/workspace/assets/assets.json
 erpnext/assets/module_onboarding/asset_onboarding/asset_onboarding.json
+erpnext/assets/insights_workbook/assets/assets.json
 erpnext/assets/dashboard_chart/category_wise_asset_value/category_wise_asset_value.json
 erpnext/assets/dashboard_chart/location_wise_asset_value/location_wise_asset_value.json
 erpnext/assets/dashboard_chart/asset_value_analytics/asset_value_analytics.json
@@ -1556,6 +1561,7 @@ erpnext/stock/services/quality_inspection_service.py
 erpnext/stock/services/stock_ledger_service.py
 erpnext/stock/services/serial_batch_bundle_service.py
 erpnext/stock/valuation.py
+erpnext/stock/insights_workbook/stock/stock.json
 erpnext/stock/test_stock_balance.py
 erpnext/stock/deprecated_serial_batch.py
 erpnext/stock/dashboard_chart/delivery_trends/delivery_trends.json
@@ -2401,6 +2407,8 @@ erpnext/accounts/services/deferred_accounting.py
 erpnext/accounts/services/advances.py
 erpnext/accounts/accounts_dashboard/accounts/accounts.json
 erpnext/accounts/accounts_dashboard/payments/payments.json
+erpnext/accounts/insights_workbook/accounts/accounts.json
+erpnext/accounts/insights_workbook/payments/payments.json
 erpnext/accounts/party.py
 erpnext/accounts/dashboard_chart/incoming_bills_(purchase_invoice)/incoming_bills_(purchase_invoice).json
 erpnext/accounts/dashboard_chart/bank_balance/bank_balance.json
@@ -2547,6 +2555,11 @@ erpnext/accounts/report/trial_balance_for_party/test_trial_balance_for_party.py
 erpnext/accounts/report/trial_balance_for_party/trial_balance_for_party.json
 erpnext/accounts/report/trial_balance_for_party/trial_balance_for_party.js
 erpnext/accounts/report/trial_balance_for_party/trial_balance_for_party.py
+erpnext/accounts/report/consolidated_accounts_receivable_summary/__init__.py
+erpnext/accounts/report/consolidated_accounts_receivable_summary/consolidated_accounts_receivable_summary.py
+erpnext/accounts/report/consolidated_accounts_receivable_summary/consolidated_accounts_receivable_summary.json
+erpnext/accounts/report/consolidated_accounts_receivable_summary/test_consolidated_accounts_receivable_summary.py
+erpnext/accounts/report/consolidated_accounts_receivable_summary/consolidated_accounts_receivable_summary.js
 erpnext/accounts/report/payment_ledger/__init__.py
 erpnext/accounts/report/payment_ledger/payment_ledger.py
 erpnext/accounts/report/payment_ledger/payment_ledger.js
@@ -2573,6 +2586,10 @@ erpnext/accounts/report/purchase_invoice_trends/test_purchase_invoice_trends.py
 erpnext/accounts/report/purchase_invoice_trends/purchase_invoice_trends.json
 erpnext/accounts/report/purchase_invoice_trends/purchase_invoice_trends.py
 erpnext/accounts/report/purchase_invoice_trends/purchase_invoice_trends.js
+erpnext/accounts/report/consolidated_accounts_payable_summary/__init__.py
+erpnext/accounts/report/consolidated_accounts_payable_summary/consolidated_accounts_payable_summary.py
+erpnext/accounts/report/consolidated_accounts_payable_summary/consolidated_accounts_payable_summary.js
+erpnext/accounts/report/consolidated_accounts_payable_summary/consolidated_accounts_payable_summary.json
 erpnext/accounts/report/billed_items_to_be_received/__init__.py
 erpnext/accounts/report/billed_items_to_be_received/test_billed_items_to_be_received.py
 erpnext/accounts/report/billed_items_to_be_received/billed_items_to_be_received.py
@@ -2657,7 +2674,13 @@ erpnext/accounts/report/invalid_ledger_entries/test_invalid_ledger_entries.py
 erpnext/accounts/report/invalid_ledger_entries/invalid_ledger_entries.py
 erpnext/accounts/report/invalid_ledger_entries/invalid_ledger_entries.js
 erpnext/accounts/report/invalid_ledger_entries/invalid_ledger_entries.json
+erpnext/accounts/report/consolidated_accounts_receivable/consolidated_accounts_receivable.json
+erpnext/accounts/report/consolidated_accounts_receivable/__init__.py
+erpnext/accounts/report/consolidated_accounts_receivable/consolidated_accounts_receivable.js
+erpnext/accounts/report/consolidated_accounts_receivable/consolidated_accounts_receivable.py
+erpnext/accounts/report/consolidated_accounts_receivable/test_consolidated_accounts_receivable.py
 erpnext/accounts/report/trial_balance_simple/__init__.py
+erpnext/accounts/report/trial_balance_simple/test_trial_balance_simple.py
 erpnext/accounts/report/trial_balance_simple/trial_balance_simple.json
 erpnext/accounts/report/sales_register/__init__.py
 erpnext/accounts/report/sales_register/sales_register.json
@@ -2688,6 +2711,10 @@ erpnext/accounts/report/pos_register/pos_register.json
 erpnext/accounts/report/pos_register/test_pos_register.py
 erpnext/accounts/report/pos_register/pos_register.js
 erpnext/accounts/report/pos_register/pos_register.py
+erpnext/accounts/report/consolidated_accounts_payable/__init__.py
+erpnext/accounts/report/consolidated_accounts_payable/consolidated_accounts_payable.js
+erpnext/accounts/report/consolidated_accounts_payable/consolidated_accounts_payable.json
+erpnext/accounts/report/consolidated_accounts_payable/consolidated_accounts_payable.py
 erpnext/accounts/doctype/bank_reconciliation_tool/__init__.py
 erpnext/accounts/doctype/bank_reconciliation_tool/bank_reconciliation_tool.json
 erpnext/accounts/doctype/bank_reconciliation_tool/bank_reconciliation_tool.py
@@ -3973,6 +4000,7 @@ erpnext/patches/v16_0/backfill_repost_accounting_ledger_status.py
 erpnext/patches/v16_0/update_account_categories_for_existing_accounts.py
 erpnext/patches/v16_0/recalculate_returned_delivery_note_billing_status.py
 erpnext/patches/v16_0/drop_redundant_serial_no_index_from_sabb.py
+erpnext/patches/v16_0/disable_add_total_row_in_trends_reports.py
 erpnext/patches/v16_0/set_post_change_gl_entries_on_pos_settings.py
 erpnext/patches/v16_0/recalculate_mixed_purchase_receipt_billing_status.py
 erpnext/patches/v16_0/create_accounting_dimensions_in_landed_cost_taxes_and_charges.py
@@ -4579,6 +4607,7 @@ erpnext/locale/th.po
 erpnext/locale/de.po
 erpnext/locale/fr.po
 erpnext/locale/it.po
+erpnext/locale/uk.po
 erpnext/locale/nb.po
 erpnext/locale/sr_CS.po
 erpnext/locale/km.po
