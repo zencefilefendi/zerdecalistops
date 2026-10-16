@@ -311,6 +311,7 @@ test/data/telegram/private/voice.json
 test/data/telegram/private/video_without_mime_type.json
 test/data/telegram/private/text2.json
 test/data/telegram/private/sticker.json
+test/data/telegram/private/my_chat_member.json
 test/data/telegram/private/text.json
 test/data/telegram/private/start2.json
 test/data/telegram/channel/document.json
@@ -795,6 +796,7 @@ db/migrate/20220216131241_issue3964_inbound_fix_options.rb
 db/migrate/20181102142526_object_manager_attribute_indexes.rb
 db/migrate/20220124101834_setting_updates2.rb
 db/migrate/20221111124620_issue4306_delete_setting.rb
+db/migrate/20261008120000_remove_implicit_lower_indexes.rb
 db/migrate/20260716120000_create_ai_provider_connections.rb
 db/migrate/20240509100920_permission_switch_to_label_description.rb
 db/migrate/20220630140511_issue3829_broken_avatars.rb
@@ -878,6 +880,7 @@ db/migrate/20251113140000_add_bearer_token_and_http_method_to_webhooks.rb
 db/migrate/20260622120000_issue5863_form_spam_protection_settings.rb
 db/migrate/20260219141733_object_manager_attributes_no_blank_display_label.rb
 db/migrate/20250717082859_ticket_add_ai_agents_working.rb
+db/migrate/20261008135305_tag_unique_index.rb
 db/migrate/20210921112300_issue_3751_missing_workflow_screens.rb
 db/migrate/20230817130057_update_api_password_access_frontend.rb
 db/migrate/20170727000001_setting_proxy.rb
@@ -1067,6 +1070,7 @@ db/migrate/20180711080554_issue_2100_utf8_encode_http_logs.rb
 db/migrate/20180128000001_chat_add_ip_country.rb
 db/migrate/20170525000001_reply_to_sender_feature.rb
 db/migrate/20210426000002_update_session_timeout_defaults.rb
+db/migrate/20261009130000_alternative_fqdn_frontend.rb
 db/migrate/20180306084119_custom_html_email_css_font.rb
 db/migrate/20241113154014_issue5409_wrong_db_column_array_type.rb
 db/migrate/20250917111129_auth_provider_form_secrets.rb
@@ -1240,10 +1244,7 @@ db/migrate/20171024000002_check_mk_integration2.rb
 log/.gitkeep
 rake
 Procfile
-.claude/hooks/lint-after-edit.sh
-.claude/hooks/regenerate-after-edit.sh
 .claude/settings.json
-.claude/commands/work-on-issue.md
 .dev/coffeelint/rules/detect_translatable_string.coffee
 .dev/cypress/pnpm-workspace.yaml
 .dev/cypress/cypress.config.mjs
@@ -1277,6 +1278,9 @@ Procfile
 .dev/agent_docs/legacy_model_patterns.md
 .dev/agent_docs/knowledge_base_patterns.md
 .dev/yard/autovivify_extension.rb
+.dev/hooks/after-edit.sh
+.dev/hooks/lint-after-edit.sh
+.dev/hooks/regenerate-after-edit.sh
 .dev/rubocop/default.yml
 .dev/rubocop/todo.rspec.yml
 .dev/rubocop/cop/zammad/concerns/can_check_namespace.rb
@@ -1351,6 +1355,7 @@ contrib/graphics.sketch
 contrib/docker/backup.sh
 contrib/release/update_files.rb
 contrib/auto_wizard_test.json
+.codex/hooks.json
 .buildpacks
 .oxfmtrc.json
 .gitlab/ci/__includes__/test_reports.yml
@@ -1721,6 +1726,7 @@ spec/graphql/gql/queries/application_build_checksum_spec.rb
 spec/graphql/gql/queries/text_module/suggestions_spec.rb
 spec/graphql/gql/queries/checklist/templates_spec.rb
 spec/graphql/gql/shared_examples/two_factor_token_validity_check.rb
+spec/graphql/gql/shared_examples/fails_if_forbidden.rb
 spec/graphql/gql/shared_examples/fails_if_unauthenticated.rb
 spec/graphql/gql/record_loader_spec.rb
 spec/graphql/gql/zammad_schema_global_id_spec.rb
@@ -1799,7 +1805,6 @@ spec/graphql/gql/mutations/ticket/ai_assistance/enqueue_knowledge_base_answer_sp
 spec/graphql/gql/mutations/ticket/ai_assistance/summarize_spec.rb
 spec/graphql/gql/mutations/ticket/create_suppress_notifications_spec.rb
 spec/graphql/gql/mutations/ticket/update_spec.rb
-spec/graphql/gql/mutations/ticket/customer_group_restriction_spec.rb
 spec/graphql/gql/mutations/ticket/create_spec.rb
 spec/graphql/gql/mutations/ticket/customer_update_trigger_response_spec.rb
 spec/graphql/gql/mutations/ticket/update/bulk_spec.rb
@@ -2390,6 +2395,7 @@ spec/jobs/vector_index_rebuild_job_spec.rb
 spec/jobs/reset_notifications_preferences_job_spec.rb
 spec/jobs/application_job_spec.rb
 spec/jobs/update_cti_logs_by_caller_job_spec.rb
+spec/initializers/knowledge_base_custom_css_presence_spec.rb
 spec/rubocop/cop/zammad/trigger_from_commit_hooks_spec.rb
 spec/rubocop/cop/zammad/active_record_reorder_spec.rb
 spec/rubocop/cop/zammad/graphql_authorize_requires_permission_spec.rb
@@ -2450,6 +2456,7 @@ spec/services/service/user/overview/update_order_spec.rb
 spec/services/service/user/overview/list_spec.rb
 spec/services/service/user/signup_spec.rb
 spec/services/service/user/signup_verify_spec.rb
+spec/services/service/user/add_first_admin_spec.rb
 spec/services/service/user/list_recent_closes_spec.rb
 spec/services/service/user/content_translation_target_locale_spec.rb
 spec/services/service/user/content_translation_auto_spec.rb
@@ -2500,6 +2507,7 @@ spec/services/service/history/list_spec.rb
 spec/services/service/history/group_spec.rb
 spec/services/service/external_data_source/search_spec.rb
 spec/services/service/external_data_source/preview_spec.rb
+spec/services/service/upload_cache/add_spec.rb
 spec/services/service/ai_assistance/text_tools_spec.rb
 spec/services/service/online_notification/delete_all_spec.rb
 spec/services/service/execute_locked_block_spec.rb
@@ -2724,6 +2732,7 @@ spec/requests/knowledge_base/deactivated_role_spec.rb
 spec/requests/knowledge_base/visible_ids_spec.rb
 spec/requests/package_spec.rb
 spec/requests/channels_email_spec.rb
+spec/db/case_insensitive_indexes_spec.rb
 spec/db/migrate/normalize_setting_ticket_number_ignore_system_id_spec.rb
 spec/db/migrate/issue_3503_fix_current_user_spec.rb
 spec/db/migrate/ticket_summary_drop_ocr_flag_spec.rb
@@ -2746,6 +2755,7 @@ spec/db/migrate/issue_4543_organization_vip_spec.rb
 spec/db/migrate/issue_3763_default_date_datetime_diff_clear_spec.rb
 spec/db/migrate/issue_2185_and_or_conditions_spec.rb
 spec/db/migrate/issue_4848_fix_overview_bulk_screen_spec.rb
+spec/db/migrate/tag_unique_index_spec.rb
 spec/db/migrate/issue_2671_pending_till_can_be_changed_by_customer_spec.rb
 spec/db/migrate/issue_4018_remove_old_translations_spec.rb
 spec/db/migrate/issue_4316_template_options_migration_spec.rb
@@ -2826,6 +2836,7 @@ spec/db/migrate/issue_5667_rename_reserved_word_spec.rb
 spec/db/migrate/issue_2608_missing_trigger_permission_spec.rb
 spec/db/migrate/issue_3245_office_365_microsoft_rename_spec.rb
 spec/db/migrate/web_push_vapid_keys_spec.rb
+spec/db/migrate/remove_implicit_lower_indexes_spec.rb
 spec/db/migrate/issue_1219_zhtw_locale_typo_spec.rb
 spec/db/migrate/issue6158_ai_summary_disabled_option_spec.rb
 spec/db/migrate/issue_1905_exchange_login_from_remote_id_spec.rb
@@ -3025,6 +3036,7 @@ spec/system/apps/desktop/ticket/shared_drafts_spec.rb
 spec/system/apps/desktop/ticket/overview_bulk_actions_spec.rb
 spec/system/apps/desktop/ticket/taskbar_state_sync_spec.rb
 spec/system/apps/desktop/ticket/reply_advanced_spec.rb
+spec/system/apps/desktop/ticket/reply_inline_image_spec.rb
 spec/system/apps/desktop/ticket/create_spec.rb
 spec/system/apps/desktop/ticket/article_translation_spec.rb
 spec/system/apps/desktop/ticket/insert_related_knowledge_base_answer_spec.rb
@@ -3076,6 +3088,7 @@ spec/system/apps/mobile_old/tickets/ticket_information_customer_edit_spec.rb
 spec/system/apps/mobile_old/tickets/update/customer_spec.rb
 spec/system/apps/mobile_old/tickets/update/external_data_source_attribute_spec.rb
 spec/system/apps/mobile_old/tickets/update/tags_spec.rb
+spec/system/apps/mobile_old/tickets/ticket_article_reply_inline_image_spec.rb
 spec/system/apps/mobile_old/tickets/create/ticket_duplicate_detection_spec.rb
 spec/system/apps/mobile_old/tickets/ticket_information_customer_spec.rb
 spec/system/apps/mobile_old/tickets/ticket_create_spec.rb
@@ -3950,12 +3963,11 @@ spec/fixtures/files/integration/elasticsearch/es-box1.box
 spec/fixtures/files/integration/elasticsearch/es-normal.txt
 spec/fixtures/files/ldap/ca.crt
 spec/lib/knowledge_base_rich_text_spec.rb
-spec/lib/selector/attribute_spec.rb
 spec/lib/selector/sql/organization_spec.rb
 spec/lib/selector/sql/user_spec.rb
-spec/lib/selector/base_spec.rb
-spec/lib/selector/base/organization_spec.rb
-spec/lib/selector/base/user_spec.rb
+spec/lib/selector/search_index_parity_spec.rb
+spec/lib/selector/search_index_parity/organization_spec.rb
+spec/lib/selector/search_index_parity/user_spec.rb
 spec/lib/selector/sql_spec.rb
 spec/lib/user_info/assets_spec.rb
 spec/lib/form_spam_protection_spec.rb
@@ -3991,8 +4003,9 @@ spec/lib/url_information_spec.rb
 spec/lib/whatsapp/account/phone_numbers_spec.rb
 spec/lib/whatsapp/outgoing/message/media_spec.rb
 spec/lib/whatsapp/outgoing/message/text_spec.rb
-spec/lib/whatsapp/webhook/payload/error_spec.rb
+spec/lib/whatsapp/webhook/concerns/handles_error_spec.rb
 spec/lib/whatsapp/webhook/message/sticker_spec.rb
+spec/lib/whatsapp/webhook/message/media_examples.rb
 spec/lib/whatsapp/webhook/message/reaction_spec.rb
 spec/lib/whatsapp/webhook/message/document_spec.rb
 spec/lib/whatsapp/webhook/message/text_spec.rb
@@ -4057,19 +4070,15 @@ spec/lib/validations/object_manager/attribute_validator/max_length_spec.rb
 spec/lib/validations/object_manager/attribute_validator/option_spec.rb
 spec/lib/validations/object_manager/attribute_validator/future_past_spec.rb
 spec/lib/validations/object_manager/attribute_validator/required_spec.rb
-spec/lib/validations/object_manager/attribute_validator/data_types_spec.rb
 spec/lib/validations/object_manager/attribute_validator/backend_examples.rb
 spec/lib/validations/object_manager/attribute_validator/external_data_source_spec.rb
 spec/lib/validations/date_range_validator_spec.rb
 spec/lib/validations/channel_email_account_uniqueness_validator_spec.rb
 spec/lib/validations/out_of_office_validator_spec.rb
 spec/lib/libre_translate/client_spec.rb
-spec/lib/import/otrs_spec.rb
-spec/lib/import/otrs/article_factory_spec.rb
 spec/lib/import/otrs/article_customer_factory_spec.rb
 spec/lib/import/otrs/dynamic_field_spec.rb
 spec/lib/import/otrs/queue_spec.rb
-spec/lib/import/otrs/customer_user_factory_spec.rb
 spec/lib/import/otrs/ticket_spec.rb
 spec/lib/import/otrs/history_examples.rb
 spec/lib/import/otrs/history/priority_update_spec.rb
@@ -4081,8 +4090,6 @@ spec/lib/import/otrs/queue_factory_spec.rb
 spec/lib/import/otrs/history_factory_spec.rb
 spec/lib/import/otrs/article/attachment_factory_spec.rb
 spec/lib/import/otrs/customer_spec.rb
-spec/lib/import/otrs/customer_factory_spec.rb
-spec/lib/import/otrs/ticket_factory_spec.rb
 spec/lib/import/otrs/priority_factory_spec.rb
 spec/lib/import/otrs/history_spec.rb
 spec/lib/import/otrs/state_spec.rb
@@ -4104,20 +4111,12 @@ spec/lib/import/otrs/state_factory_spec.rb
 spec/lib/import/otrs/user_spec.rb
 spec/lib/import/otrs/customer_user_spec.rb
 spec/lib/import/otrs/dynamic_field_factory_spec.rb
-spec/lib/import/otrs/diff_examples.rb
-spec/lib/import/async_examples.rb
 spec/lib/import/base_factory_examples.rb
-spec/lib/import/import_stats_examples.rb
-spec/lib/import/import_factory_examples.rb
 spec/lib/import/import_job_backend_examples.rb
 spec/lib/import/helper_spec.rb
-spec/lib/import/importer_examples.rb
 spec/lib/import/base_factory_spec.rb
-spec/lib/import/factory_examples.rb
 spec/lib/import/base_spec.rb
 spec/lib/import/factory_spec.rb
-spec/lib/import/transaction_factory_examples.rb
-spec/lib/import/helper_examples.rb
 spec/lib/import/exchange/folder_spec.rb
 spec/lib/import/ldap_spec.rb
 spec/lib/import/transaction_factory_spec.rb
@@ -4146,13 +4145,11 @@ spec/lib/email_helper/idn_spec.rb
 spec/lib/transaction_dispatcher_spec.rb
 spec/lib/notification_factory_spec.rb
 spec/lib/ai/vectordb_spec.rb
-spec/lib/ai/vectordb/version_spec.rb
 spec/lib/ai/provider/concerns/has_models_without_temperature_fallback_spec.rb
 spec/lib/ai/provider/concerns/handles_open_ai_messages_spec.rb
 spec/lib/ai/provider/check_temperature_support_spec.rb
 spec/lib/ai/provider/azure_spec.rb
 spec/lib/ai/provider/shared_examples/embed.rb
-spec/lib/ai/provider/shared_examples/model_supports_temperature.rb
 spec/lib/ai/provider/shared_examples/no_model_listing.rb
 spec/lib/ai/provider/shared_examples/check_temperature_support.rb
 spec/lib/ai/provider/shared_examples/ping.rb
@@ -4208,6 +4205,7 @@ spec/lib/background_services/service/process_delayed_jobs_spec.rb
 spec/lib/background_services/service/process_scheduled_jobs_spec.rb
 spec/lib/background_services/service/manage_sessions_jobs_spec.rb
 spec/lib/background_services/service/process_sessions_jobs_spec.rb
+spec/lib/background_services/service/process_delayed_jobs_examples.rb
 spec/lib/background_services/service/process_delayed_ai_jobs_spec.rb
 spec/lib/background_services/service/process_scheduled_jobs/job_executor_spec.rb
 spec/lib/background_services/service/process_scheduled_jobs/manager_spec.rb
@@ -4288,7 +4286,6 @@ spec/lib/auth/backend/internal_spec.rb
 spec/lib/auth/backend/base_spec.rb
 spec/lib/auth/backend/developer_spec.rb
 spec/lib/auth/backend/ldap_spec.rb
-spec/lib/auth/backend/backend_examples.rb
 spec/lib/auth/two_factor/authentication_method/security_keys_spec.rb
 spec/lib/auth/two_factor/authentication_method/authenticator_app_spec.rb
 spec/lib/auth/two_factor/authentication_method_spec.rb
@@ -4509,7 +4506,6 @@ lib/core_ext/koala/http_service/response.rb
 lib/core_ext/logger/formatter.rb
 lib/core_ext/rszr.rb
 lib/core_ext/email_address/lib/email_address/local.rb
-lib/core_ext/active_record/connection_adapters/postgresql/schema_statements.rb
 lib/core_ext/active_record/migration/suspends_audit_log.rb
 lib/core_ext/active_record/calculations/pluck_as_hash.rb
 lib/core_ext/active_record/store/indifferent_coder.rb
@@ -5622,6 +5618,7 @@ public/assets/images/icons/plus-small.svg
 public/assets/images/icons/line-right-arrow.svg
 public/assets/images/icons/saml-button.svg
 public/assets/images/icons/weibo-button.svg
+public/assets/images/icons/book.svg
 public/assets/images/icons/clock.svg
 public/assets/images/icons/outbound-calls.svg
 public/assets/images/icons/double-arrow-right.svg
@@ -5731,6 +5728,7 @@ public/assets/tests/qunit/controller_observer.js
 public/assets/tests/qunit/form_code_editor.js
 public/assets/tests/qunit/form_core_workflow.js
 public/assets/tests/qunit/kb_video_embeding.js
+public/assets/tests/qunit/unknown_address_detection.js
 public/assets/tests/qunit/model_ticket.js
 public/assets/tests/qunit/form_extended.js
 public/assets/tests/qunit/local_storage.js
@@ -6331,6 +6329,7 @@ app/graphql/gql/types/input/user/push_subscription_keys_input_type.rb
 app/graphql/gql/types/input/selector/object_input_type.rb
 app/graphql/gql/types/input/selector/node_input_type.rb
 app/graphql/gql/types/input/organization_input_type.rb
+app/graphql/gql/types/input/upload_cache_file_input_type.rb
 app/graphql/gql/types/input/beta_ui/feedback_input_type.rb
 app/graphql/gql/types/input/ticket/update_input_type.rb
 app/graphql/gql/types/input/ticket/link_input_type.rb
@@ -6447,6 +6446,8 @@ app/frontend/cypress/shared/components/Form/fields/FieldTags/tags-visuals.cy.ts
 app/frontend/cypress/shared/components/Form/fields/FieldToggle/toggle-visuals.cy.ts
 app/frontend/cypress/shared/components/Form/fields/FieldSelect/select-visuals.cy.ts
 app/frontend/cypress/shared/components/Form/fields/FieldInput/input-visuals.cy.ts
+app/frontend/cypress/shared/components/Form/fields/FieldEditor/editor-insert-knowledge-base-answer.cy.ts
+app/frontend/cypress/shared/components/Form/fields/FieldEditor/editor-inline-image-upload.cy.ts
 app/frontend/cypress/shared/components/Form/fields/FieldEditor/editor-action-text-tools.cy.ts
 app/frontend/cypress/shared/components/Form/fields/FieldEditor/utils.ts
 app/frontend/cypress/shared/components/Form/fields/FieldEditor/editor-mention-text-exit-with-escape.cy.ts
@@ -6652,6 +6653,7 @@ app/frontend/apps/mobile/initializer/assets/gitlab.svg
 app/frontend/apps/mobile/initializer/assets/check-box-no.svg
 app/frontend/apps/mobile/initializer/initializeGlobalDirectives.ts
 app/frontend/apps/mobile/initializer/mobileVisuals.ts
+app/frontend/apps/mobile/initializer/preloadComponents.ts
 app/frontend/apps/mobile/initializer/initializeGlobalComponentStyles.ts
 app/frontend/apps/mobile/initializer/mobileIconsAliasesMap.ts
 app/frontend/apps/mobile/currentApp.ts
@@ -8140,6 +8142,8 @@ app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInf
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAiDraftFlyoutAnswerSkeleton.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAiDraftFlyoutAnswer.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseAiDraftFlyout.vue
+app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/composables/useKnowledgeBaseAnswerInsert.ts
+app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/composables/__tests__/useKnowledgeBaseAnswerInsert.spec.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/composables/useKnowledgeBaseAnswerLinks.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/TicketKnowledgeBaseLinks.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketSidebar/TicketSidebarInformation/TicketSidebarInformationContent/TicketRelatedKnowledge/types.ts
@@ -9774,10 +9778,14 @@ app/frontend/shared/components/Form/fields/FieldEditor/features/color-picker/col
 app/frontend/shared/components/Form/fields/FieldEditor/features/color-picker/colors/types.ts
 app/frontend/shared/components/Form/fields/FieldEditor/features/color-picker/colors/colors-base.ts
 app/frontend/shared/components/Form/fields/FieldEditor/features/color-picker/initializeEditorColorMenuClasses.ts
-app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/useImageUpload.ts
+app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/__tests__/inlineImageUploads.spec.ts
+app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/__tests__/imageUpload.spec.ts
+app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/inlineImageUploads.ts
 app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/ImageUploadInsideOtherEditor.vue
 app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/ImageFailedUploadOverlay.vue
+app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/types.ts
 app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/ImageHandler.vue
+app/frontend/shared/components/Form/fields/FieldEditor/features/image-handler/imageUpload.ts
 app/frontend/shared/components/Form/fields/FieldEditor/features/table/TableMenuPopover.vue
 app/frontend/shared/components/Form/fields/FieldEditor/features/table/TableMenuTrigger.vue
 app/frontend/shared/components/Form/fields/FieldEditor/features/table/useTableMenu.ts
@@ -10050,6 +10058,7 @@ app/frontend/shared/composables/__tests__/useDocumentVisibility.spec.ts
 app/frontend/shared/composables/__tests__/useRecentSearches.spec.ts
 app/frontend/shared/composables/__tests__/useOnlineNotificationSeen.spec.ts
 app/frontend/shared/composables/__tests__/useEmailFileUrls.spec.ts
+app/frontend/shared/composables/__tests__/useUnknownAddressDetection.spec.ts
 app/frontend/shared/composables/__tests__/useTouchDevice.spec.ts
 app/frontend/shared/composables/__tests__/useLoginTwoFactor.spec.ts
 app/frontend/shared/composables/__tests__/useHtmlInlineImages.spec.ts
@@ -10061,6 +10070,7 @@ app/frontend/shared/composables/__tests__/useReactivate.spec.ts
 app/frontend/shared/composables/__tests__/useAuthenticationUpdates.spec.ts
 app/frontend/shared/composables/useHtmlInlineImages.ts
 app/frontend/shared/composables/useDebouncedLoading.ts
+app/frontend/shared/composables/useUnknownAddressDetection.ts
 app/frontend/shared/composables/activity-message/useActivityMessage.ts
 app/frontend/shared/composables/activity-message/activityMessageBuilder/__tests__/activityMessageBuilder.spec.ts
 app/frontend/shared/composables/activity-message/activityMessageBuilder/builders/data-privacy-task.ts
@@ -10447,6 +10457,7 @@ app/frontend/shared/entities/online-notification/graphql/subscriptions/onlineNot
 app/frontend/shared/entities/online-notification/__tests__/mocks/online-notification-mocks.ts
 app/frontend/shared/entities/online-notification/composables/useOnlineNotificationCount.ts
 app/frontend/shared/entities/online-notification/composables/useOnlineNotificationList.ts
+app/frontend/shared/entities/online-notification/composables/__tests__/useOnlineNotificationCount.spec.ts
 app/frontend/shared/entities/online-notification/composables/useOnlineNotificationActions.ts
 app/frontend/shared/entities/public-links/graphql/queries/links.mocks.ts
 app/frontend/shared/entities/public-links/graphql/queries/links.api.ts
@@ -13310,6 +13321,7 @@ app/assets/javascripts/app/controllers/_plugin/session_timeout.coffee
 app/assets/javascripts/app/controllers/_plugin/default_locale.coffee
 app/assets/javascripts/app/controllers/_plugin/user_signup_check.coffee
 app/assets/javascripts/app/controllers/_plugin/desktop_beta_switch.coffee
+app/assets/javascripts/app/controllers/_plugin/unknown_address_detection.coffee
 app/assets/javascripts/app/controllers/_plugin/switch_back_to_user.coffee
 app/assets/javascripts/app/controllers/_plugin/electron_events.coffee
 app/assets/javascripts/app/controllers/_plugin/session_taken_over.coffee
@@ -13715,6 +13727,7 @@ app/services/service/external_data_source/search.rb
 app/services/service/external_data_source/preview.rb
 app/services/service/avatar/add.rb
 app/services/service/avatar/image_validate.rb
+app/services/service/upload_cache/add.rb
 app/services/service/ai_assistance/text_tools.rb
 app/services/service/base.rb
 app/services/service/search.rb

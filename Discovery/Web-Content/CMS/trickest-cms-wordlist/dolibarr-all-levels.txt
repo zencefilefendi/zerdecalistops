@@ -23903,6 +23903,10 @@ htdocs/core/boxes/box_contacts.php
 core/boxes/box_contacts.php
 boxes/box_contacts.php
 box_contacts.php
+htdocs/core/boxes/box_holidays_to_approve.php
+core/boxes/box_holidays_to_approve.php
+boxes/box_holidays_to_approve.php
+box_holidays_to_approve.php
 htdocs/core/boxes/box_members_last_subscriptions.php
 core/boxes/box_members_last_subscriptions.php
 boxes/box_members_last_subscriptions.php
@@ -23995,6 +23999,10 @@ htdocs/core/boxes/box_contracts.php
 core/boxes/box_contracts.php
 boxes/box_contracts.php
 box_contracts.php
+htdocs/core/boxes/box_expensereports_to_approve.php
+core/boxes/box_expensereports_to_approve.php
+boxes/box_expensereports_to_approve.php
+box_expensereports_to_approve.php
 htdocs/core/boxes/box_graph_propales_permonth.php
 core/boxes/box_graph_propales_permonth.php
 boxes/box_graph_propales_permonth.php
@@ -24935,6 +24943,10 @@ htdocs/core/js/editinplace.js
 core/js/editinplace.js
 js/editinplace.js
 editinplace.js
+htdocs/core/js/customreports.js
+core/js/customreports.js
+js/customreports.js
+customreports.js
 htdocs/core/js/lib_tooltip-freeze-by-alt-keypress.js
 core/js/lib_tooltip-freeze-by-alt-keypress.js
 js/lib_tooltip-freeze-by-alt-keypress.js
@@ -34249,6 +34261,9 @@ printbox.php
 htdocs/takepos/index.php
 takepos/index.php
 index.php
+htdocs/takepos/creditnote_apply.php
+takepos/creditnote_apply.php
+creditnote_apply.php
 htdocs/takepos/send.php
 takepos/send.php
 send.php
@@ -66084,7 +66099,6 @@ doc/install/README-DE
 install/README-DE
 README-DE
 pyproject.toml
-probe.txt
 test/manual/plan.md
 manual/plan.md
 plan.md
@@ -66958,6 +66972,10 @@ agent-power.toml
 skills/skill-doli-devmodule/SKILL.md
 skill-doli-devmodule/SKILL.md
 SKILL.md
+.agents/skills/skill-doli-translation/SKILL.md
+skills/skill-doli-translation/SKILL.md
+skill-doli-translation/SKILL.md
+SKILL.md
 .agents/skills/skill-doli-test-hurl/SKILL.md
 skills/skill-doli-test-hurl/SKILL.md
 skill-doli-test-hurl/SKILL.md
@@ -67449,6 +67467,9 @@ fixaltlanguages.sh
 dev/tools/apstats.php
 tools/apstats.php
 apstats.php
+dev/tools/github_authors_and_commits_bydate.sh
+tools/github_authors_and_commits_bydate.sh
+github_authors_and_commits_bydate.sh
 dev/tools/dolibarr-postgres2mysql.php
 tools/dolibarr-postgres2mysql.php
 dolibarr-postgres2mysql.php

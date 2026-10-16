@@ -701,7 +701,6 @@ test/org/apache/catalina/realm/TesterRolePrincipal.java
 test/org/apache/catalina/realm/TestJNDIRealmIntegration.java
 test/org/apache/catalina/realm/TestCombinedRealm.java
 test/org/apache/catalina/realm/TestJNDIRealmSearchAsUser.java
-test/org/apache/catalina/realm/TestJAASRealm.java
 test/org/apache/catalina/realm/TestJNDIRealmAttributeValueEscape.java
 test/org/apache/catalina/realm/TesterPrincipalNonSerializable.java
 test/org/apache/catalina/realm/TesterPrincipal.java
@@ -792,8 +791,10 @@ test/org/apache/catalina/valves/TestSSLValve.java
 test/org/apache/catalina/valves/Benchmarks.java
 test/org/apache/catalina/valves/TestSemaphoreValve.java
 test/org/apache/catalina/valves/TestExtendedAccessLogValveWrap.java
+test/org/apache/catalina/valves/TestExtendedAccessLogValveOpen.java
 test/org/apache/catalina/valves/rewrite/TestResolverSSLComponents.java
 test/org/apache/catalina/valves/rewrite/TestQuotedStringTokenizer.java
+test/org/apache/catalina/valves/rewrite/TestRandomizedTextRewriteMap.java
 test/org/apache/catalina/valves/rewrite/TestResolverSSL.java
 test/org/apache/catalina/valves/rewrite/TestRewriteValve.java
 test/org/apache/catalina/valves/rewrite/TesterRewriteMapA.java
@@ -811,6 +812,7 @@ test/org/apache/catalina/valves/TestStuckThreadDetectionValve.java
 test/org/apache/catalina/valves/TestLoadBalancerDrainingValve.java
 test/org/apache/catalina/valves/TestPersistentValve.java
 test/org/apache/catalina/valves/TestProxyErrorReportValve.java
+test/org/apache/catalina/valves/TestExtendedAccessLogValveElements.java
 test/org/apache/catalina/valves/TestAbstractAccessLogValveEscape.java
 test/org/apache/catalina/valves/TestRequestFilterValve.java
 test/org/apache/catalina/storeconfig/TestStoreRegistry.java
@@ -843,6 +845,7 @@ test/org/apache/catalina/webresources/TestJarWarResourceSet.java
 test/org/apache/catalina/webresources/AbstractTestResourceSetMount.java
 test/org/apache/catalina/webresources/TestWebResourceContentType.java
 test/org/apache/catalina/webresources/TestResourceJars.java
+test/org/apache/catalina/webresources/TestJarResourceSetInternalMount.java
 test/org/apache/catalina/webresources/TestCachedResource.java
 test/org/apache/catalina/webresources/TestJarContents.java
 test/org/apache/catalina/webresources/TestAbstractArchiveResource.java
@@ -952,7 +955,6 @@ test/org/apache/catalina/session/TestManagerBase.java
 test/org/apache/catalina/session/TestStandardManager.java
 test/org/apache/catalina/session/TestPersistentManagerIntegration.java
 test/org/apache/catalina/session/TestStandardSessionAccessor.java
-test/org/apache/catalina/session/TestPersistentManagerBase.java
 test/org/apache/catalina/servlets/TestWebdavPropertyStore.java
 test/org/apache/catalina/servlets/TestWebdavServletOptionsFile.java
 test/org/apache/catalina/servlets/TestWebdavServletOptionsUnknown.java
@@ -1174,6 +1176,7 @@ test/org/apache/tomcat/util/buf/TestB2CConverter.java
 test/org/apache/tomcat/util/buf/TestByteChunk.java
 test/org/apache/tomcat/util/buf/TestCharsetUtil.java
 test/org/apache/tomcat/util/buf/TestStringUtils.java
+test/org/apache/tomcat/util/buf/TestAsn1Writer.java
 test/org/apache/tomcat/util/buf/TestCharsetCachePerformance.java
 test/org/apache/tomcat/util/buf/TestCharsetCache.java
 test/org/apache/tomcat/util/buf/TestUriUtilIsAbsoluteURI.java
@@ -1181,6 +1184,7 @@ test/org/apache/tomcat/util/buf/TesterUriUtilBase.java
 test/org/apache/tomcat/util/buf/TestStringCache.java
 test/org/apache/tomcat/util/buf/TestUriUtil26.java
 test/org/apache/tomcat/util/file/TestConfigFileLoader.java
+test/org/apache/tomcat/util/file/TestConfigurationSource.java
 test/org/apache/tomcat/util/threads/TestLimitLatch.java
 test/org/apache/tomcat/util/http/TestParameters.java
 test/org/apache/tomcat/util/http/TestCookies.java
@@ -1200,6 +1204,7 @@ test/org/apache/tomcat/util/http/parser/TestTE.java
 test/org/apache/tomcat/util/http/parser/TestPriority.java
 test/org/apache/tomcat/util/http/parser/TestUpgrade.java
 test/org/apache/tomcat/util/http/parser/TestTokenList.java
+test/org/apache/tomcat/util/http/parser/TestAcceptEncoding.java
 test/org/apache/tomcat/util/http/parser/TesterHttpWgStructuredField.java
 test/org/apache/tomcat/util/http/parser/TesterHostPerformance.java
 test/org/apache/tomcat/util/http/parser/TestRanges.java
@@ -1208,6 +1213,7 @@ test/org/apache/tomcat/util/http/parser/TestAcceptLanguage.java
 test/org/apache/tomcat/util/http/parser/TestHttpParser.java
 test/org/apache/tomcat/util/http/TestRequestUtilNormalize.java
 test/org/apache/tomcat/util/http/TestResponseUtil.java
+test/org/apache/tomcat/util/http/TestWebdavIfHeader.java
 test/org/apache/tomcat/util/http/TestCookieProcessorGeneration.java
 test/org/apache/tomcat/util/http/TestFastHttpDateFormat.java
 test/org/apache/tomcat/util/http/TestMethodPerformance.java
@@ -1222,14 +1228,20 @@ test/org/apache/tomcat/util/collections/TestCaseInsensitiveKeyMap.java
 test/org/apache/tomcat/util/collections/TesterPerformanceSynchronizedQueue.java
 test/org/apache/tomcat/util/collections/TestConcurrentLruCache.java
 test/org/apache/tomcat/util/collections/TestSynchronizedStack.java
+test/org/apache/tomcat/util/collections/TestConcurrentCache.java
 test/org/apache/tomcat/util/collections/TesterPerformanceSynchronizedStack.java
 test/org/apache/tomcat/util/collections/TestSynchronizedQueue.java
 test/org/apache/tomcat/util/res/TestStringManager.java
 test/org/apache/tomcat/util/bcel/TesterPerformance.java
 test/org/apache/tomcat/util/concurrent/TestKeyedReentrantReadWriteLock.java
+test/org/apache/tomcat/util/descriptor/tagplugin/TestTagPluginParser-malformed.xml
+test/org/apache/tomcat/util/descriptor/tagplugin/TestTagPluginParser.java
 test/org/apache/tomcat/util/descriptor/tld/TestTldParser.java
 test/org/apache/tomcat/util/descriptor/tld/TestImplicitTldParser.java
+test/org/apache/tomcat/util/descriptor/tld/TestTldResourcePath.java
+test/org/apache/tomcat/util/descriptor/web/TestSessionConfig.java
 test/org/apache/tomcat/util/descriptor/web/TestWebRuleSet.java
+test/org/apache/tomcat/util/descriptor/web/TestSecurityRoleRef.java
 test/org/apache/tomcat/util/descriptor/web/TestSecurityConstraint.java
 test/org/apache/tomcat/util/descriptor/web/TestServletDef.java
 test/org/apache/tomcat/util/descriptor/web/TestWebXmlOrdering.java
@@ -1323,6 +1335,10 @@ test/org/apache/tomcat/util/net/TestSSLHostConfigProtocol.java
 test/org/apache/tomcat/util/net/localhost-crl-rsa-cert.pem
 test/org/apache/tomcat/util/net/localhost-ec.jks
 test/org/apache/tomcat/util/net/TesterSupport.java
+test/org/apache/tomcat/util/digester/TestArrayStack.java
+test/org/apache/tomcat/util/digester/TestServiceBindingPropertySource.java
+test/org/apache/tomcat/util/digester/TestDigester.java
+test/org/apache/tomcat/util/digester/TestCallMethodRule.java
 test/org/apache/tomcat/util/digester/TestObjectCreateRule.java
 test/org/apache/tomcat/buildutil/translate/TestUtils.java
 test/org/apache/tomcat/buildutil/translate/TestFixedStrings.java
@@ -1370,13 +1386,17 @@ test/org/apache/coyote/http11/TestHttp11ProcessorDoHead.java
 test/org/apache/coyote/http11/TestHttp11InputBufferCRLF.java
 test/org/apache/coyote/http11/TestHttp11OutputBuffer.java
 test/org/apache/coyote/http11/filters/TestGzipOutputFilter.java
+test/org/apache/coyote/http11/filters/TestBufferedInputFilter.java
 test/org/apache/coyote/http11/filters/TestChunkedOutputFilter.java
 test/org/apache/coyote/http11/filters/TesterOutputBuffer.java
 test/org/apache/coyote/http11/filters/TestChunkedInputFilter.java
 test/org/apache/coyote/ajp/TesterAjpMessage.java
+test/org/apache/coyote/ajp/TestConstants.java
 test/org/apache/coyote/ajp/TestAbstractAjpProcessor.java
 test/org/apache/coyote/ajp/SimpleAjpClient.java
+test/org/apache/coyote/TestCompressionConfigSetters.java
 test/org/apache/coyote/TestRequest.java
+test/org/apache/coyote/TestAbstractProcessorAsyncTimeout.java
 test/org/apache/coyote/http2/TestHttp2Section_4_1.java
 test/org/apache/coyote/http2/TestHttp2Section_4_3.java
 test/org/apache/coyote/http2/TestHttp2Section_8_1.java
@@ -1400,6 +1420,7 @@ test/org/apache/coyote/http2/TestRfc9218.java
 test/org/apache/coyote/http2/TestFlowControl.java
 test/org/apache/coyote/http2/TestAsyncError.java
 test/org/apache/coyote/http2/TestAsyncReadListener.java
+test/org/apache/coyote/http2/TestStreamStateMachine.java
 test/org/apache/coyote/http2/TestHttp2RequestParameters.java
 test/org/apache/coyote/http2/TestLargeUpload.java
 test/org/apache/coyote/http2/TestStream.java
@@ -1411,6 +1432,7 @@ test/org/apache/coyote/http2/TestHttp2Section_6_3.java
 test/org/apache/coyote/http2/TestByteUtil.java
 test/org/apache/coyote/http2/TestHttp2Section_8_3.java
 test/org/apache/coyote/http2/TestHttp2Section_6_7.java
+test/org/apache/coyote/http2/TestConnectionSettingsLocal.java
 test/org/apache/coyote/http2/TestHttp2InitialConnection.java
 test/org/apache/coyote/http2/TesterHttp2Parser.java
 test/org/apache/coyote/http2/TestHttp2Section_8_5.java
@@ -1420,6 +1442,7 @@ test/org/apache/coyote/http2/TestHttp2Section_6_8.java
 test/org/apache/coyote/http2/TestHpack.java
 test/org/apache/coyote/http2/TestHttp2Section_5_1.java
 test/org/apache/coyote/http2/TestHttp2ConnectionTimeouts.java
+test/org/apache/coyote/http2/TestHttp2AsyncUpgradeHandler.java
 test/org/apache/coyote/http2/TestStandardSessionIntegrationHttp2.java
 test/org/apache/coyote/http2/TestCancelledUpload.java
 test/org/apache/coyote/http2/TestHttp2Section_8_2.java
@@ -1456,6 +1479,7 @@ test/org/apache/jasper/compiler/TestValidator.java
 test/org/apache/jasper/compiler/TestCompiler.java
 test/org/apache/jasper/compiler/TestJspDocumentParser.java
 test/org/apache/jasper/compiler/TesterNonstandardTagPerformance.java
+test/org/apache/jasper/compiler/TestTldCache.java
 test/org/apache/jasper/compiler/TestELInterpreterFactory.java
 test/org/apache/jasper/compiler/TestGenerator.java
 test/org/apache/jasper/compiler/TestJspUtil.java
@@ -2594,10 +2618,7 @@ java/org/apache/catalina/ant/ReloadTask.java
 java/org/apache/catalina/ant/AbstractCatalinaTask.java
 java/org/apache/catalina/ant/StopTask.java
 java/org/apache/catalina/realm/LocalStrings_es.properties
-java/org/apache/catalina/realm/JAASCallbackHandler.java
 java/org/apache/catalina/realm/package.html
-java/org/apache/catalina/realm/JAASMemoryLoginModule.java
-java/org/apache/catalina/realm/JAASRealm.java
 java/org/apache/catalina/realm/DigestCredentialHandlerBase.java
 java/org/apache/catalina/realm/LocalStrings_ja.properties
 java/org/apache/catalina/realm/RealmBase.java
@@ -3895,6 +3916,7 @@ java/org/apache/tomcat/util/LocalStrings_pt_BR.properties
 java/org/apache/tomcat/util/collections/ManagedConcurrentWeakHashMap.java
 java/org/apache/tomcat/util/collections/ConcurrentCache.java
 java/org/apache/tomcat/util/collections/CaseInsensitiveKeyMap.java
+java/org/apache/tomcat/util/collections/LocalStrings.properties
 java/org/apache/tomcat/util/collections/ConcurrentLruCache.java
 java/org/apache/tomcat/util/collections/SynchronizedStack.java
 java/org/apache/tomcat/util/collections/SynchronizedQueue.java
@@ -3936,6 +3958,7 @@ java/org/apache/tomcat/util/concurrent/LocalStrings_fr.properties
 java/org/apache/tomcat/util/descriptor/LocalStrings_es.properties
 java/org/apache/tomcat/util/descriptor/LocalResolver.java
 java/org/apache/tomcat/util/descriptor/tagplugin/TagPluginParser.java
+java/org/apache/tomcat/util/descriptor/tagplugin/LocalStrings.properties
 java/org/apache/tomcat/util/descriptor/tld/package-info.java
 java/org/apache/tomcat/util/descriptor/tld/LocalStrings_ja.properties
 java/org/apache/tomcat/util/descriptor/tld/ImplicitTldRuleSet.java
